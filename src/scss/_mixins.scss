@@ -1,0 +1,76 @@
+@mixin mobile {
+    @media (max-width: 690px) { @content; }
+}
+
+@mixin tablet {
+    @media (max-width: 1375px) { @content; }
+}
+
+@mixin desktop {
+    @media (min-width: 1376px) { @content; }
+}
+
+
+// Mixins for heading underlines
+
+@mixin heading-1-underline {
+    position: relative;
+
+    &:after {
+        border-bottom: 2px solid $color-brand-tertiary;
+        content: "";
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        width: 6rem;
+    }
+}
+
+@mixin center-heading-1-underline {
+    position: relative;
+
+    &:after {
+        border-bottom: 2px solid $color-brand-tertiary;
+        content: "";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        position: absolute;
+        width: 6rem;
+    }
+}
+
+@mixin heading-2-underline {
+    position: relative;
+
+    &:after {
+        border-bottom: 2px solid $color-brand-tertiary;
+        content: "";
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        width: 4rem;
+    }
+}
+
+@mixin heading-3-underline {
+    position: relative;
+
+    &:after {
+        border-bottom: 2px solid $color-brand-tertiary;
+        content: "";
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        width: 4rem;
+    }
+}
+
+/*  
+@include desktop {
+    .header {
+       border: 1px solid yellow;
+    }
+}
+*/

@@ -1,0 +1,423 @@
+/*
+	********************************************
+
+        The List and Awards Structure
+
+	********************************************
+    	
+        1.   JS class to switch between page tabs
+        2.   1-50 and Specialist Award list styling
+        2.1  List stylings for desktop
+        2.1  List stylings for tablet
+        2.1  List stylings for mobile
+
+	********************************************
+*/
+
+//JS classes to switch between tabs
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.current{
+    display: inherit;
+}
+
+//1-50 and Specialist Award list styling
+
+.row-background.the-list {
+
+    .row {
+
+        &.row-title {
+            padding: 6rem 2.5rem 0 2.5rem;
+        }
+
+        .list-title {
+            color: #fff;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+
+            ul.tabs {
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+
+                li {
+
+                    display: inline-block;
+
+                    span {
+                        color: $color-white-60;
+                        cursor: pointer;
+                        padding: 2rem;
+                        position: relative;
+                        text-decoration: none;
+                        transition: all .3s ease;
+
+                        &:hover {
+                            color: #FFF;
+                        }
+
+                        &::after {
+                            background-color: $color-brand-tertiary;
+                            border-bottom: none;
+                            content: "";
+                            position: absolute;
+                            width: 0; 
+                            height: 2px;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            margin: 0 auto; 
+                            outline: none;
+                            text-decoration: none;
+                            transition: all .3s ease-in-out;
+                            visibility: hidden;
+                        }
+
+                        &.active {
+                            color: #FFF;
+                            font-weight: 600;
+                            text-decoration: none;
+        
+                            &::after {
+                                width: 4rem;
+                                visibility: visible;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .list {
+            display: grid;
+
+            a {
+                color: #000;
+                display: flex;
+                flex-direction: column;
+                transition: all 0.5s ease-out;
+                padding: 0 0 0 0;
+                width: 100%;
+
+                img {
+                    height: auto;
+                    max-width: 100%;
+                    width: 100%;
+                }
+
+                .the-list-meta {
+                    display: flex;
+
+                    .the-list-number {
+                        align-items: center;
+                        display: flex;
+                        border-radius: 50%; 
+                        border: 2px solid $color-brand-tertiary;
+                        color: #000;
+                        font-family: "Sentinel A", "Sentinel B", serif;
+                        justify-content: center;
+                        margin-top: 0.5rem;
+                        padding: 0 0 0 0;
+                        text-align: center;
+                        width: 100%;
+                    }
+                }
+
+                &:hover {
+                    transform: translate(0px, -1rem);
+                    text-decoration: none;
+                }
+            }
+
+            &.awards {
+                a {
+                    &:last-of-type {
+                        padding-left: 0;
+                    }
+
+                    .the-list-meta {
+                        flex-direction: column;
+
+                        h2 {
+                            margin: 0 0;
+
+                            @include heading-2-underline;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        // 2.1 List stylings for desktop
+
+        @include desktop {
+            
+            .list-title {
+
+                h1 {
+                    padding: 0 0 4rem 0;
+                }
+
+                ul.tabs {
+
+                    li {
+                        font-size: 2.5rem;
+                    }
+                }
+            }
+
+            .list {
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 4rem;
+                grid-row-gap: 4rem;
+
+                a {
+
+                    .the-list-meta {
+                        padding: 1.5rem 0 0 0;
+
+                        .the-list-number {
+                            box-sizing: border-box;
+                            font-size: 3rem;
+                            height: 5.5rem;
+                            line-height: 3rem;
+                            max-height: 5.5rem;
+                            max-width: 5.5rem;
+
+                            span {
+                                display: block;
+                                height: 34px;
+                            }
+                        }
+
+                        .the-list-info {
+                            padding-left: 1.5rem;
+                        }
+
+                        h2 {
+                            font-size: 2.5rem;
+                            font-weight: 600;
+                            line-height: 3.5rem;
+                            padding-bottom: 0;
+                        }
+    
+                        p {
+                            font-size: 1.8rem;
+                            line-height: 3rem;
+                            padding: 0 0 0 0;
+                        }
+                    }
+                }
+
+                &.awards {
+
+                    .the-list-meta {
+
+                        h2 {
+                            font-size: 2.5rem;
+                            padding-bottom: 1.5rem;
+                        }
+
+                        p {
+                            margin: 0 0;
+                            padding: 1.5rem 0 0 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2.2 List stylings for tablet
+
+        @include tablet {
+
+            &.row-title {
+                padding: 4rem 2rem 0 2rem;
+            }
+
+            .list-title {
+
+                h1 {
+                    padding: 0 0 2rem 0;
+                }
+
+                ul.tabs {
+
+                    li {
+                        font-size: 1.8rem;
+                    }
+                }
+            }
+
+            .list {
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 3rem;
+                grid-row-gap: 4rem;
+
+                a {
+
+                    .the-list-meta {
+                        padding-top: 1.5rem;
+
+                        .the-list-number {
+                            font-size: 2.5rem;
+                            height: 4.5rem;
+                            line-height: 2.5rem;
+                            max-height: 4.5rem;
+                            max-width: 4.5rem;
+
+                            span {
+                                height: 27px;
+                            }
+                        }
+
+                        .the-list-info {
+                            padding-left: 1rem;
+                        }
+
+                        h2 {
+                            font-size: 2rem;
+                            line-height: 3rem;
+                            padding-bottom: 0.25rem;
+                        }
+
+                        p {
+                            font-size: 1.6rem;
+                            line-height: 2rem;
+                            padding: 0 0 0 0;
+                        }
+                    }
+                }
+
+                &.awards {
+
+                    .the-list-meta {
+
+                        h2 {
+                            font-size: 2rem;
+                            line-height: 3rem;
+                            padding-bottom: 1.5rem;
+                        }
+        
+                        p {
+                            padding: 1.5rem 0 0 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2.3 List stylings for mobile
+
+        @include mobile {
+
+            &.row-title {
+                padding: 3rem 2rem 0 2rem;
+            }
+
+            .list-title {
+
+                h1 {
+                    padding: 0 0 2rem 0;
+                }
+
+                ul.tabs {
+
+                    li {
+                        font-size: 1.8rem;
+                        padding: 1rem 0 1.5rem 0;
+                        
+                        a {
+                            &.active {
+                                &::after {
+                                    width: 3rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .list {
+                grid-template-columns: 1fr;
+                grid-column-gap: 0rem;
+                grid-row-gap: 2rem; 
+
+                a {
+
+                    .the-list-meta {
+                        padding-top: 1rem;
+                        padding-bottom: 1rem;
+
+                        .the-list-number {
+                            font-size: 2.5rem;
+                            height: 4.5rem;
+                            line-height: 2.5rem;
+                            max-height: 4.5rem;
+                            max-width: 4.5rem;
+
+                            span {
+                                height: 27px;
+                            }
+                        }
+
+                        .the-list-info {
+                            padding-left: 1rem;
+                        }
+
+                        h2 {
+                            font-size: 2rem;
+                            line-height: 2.6rem;
+                            padding-bottom: 0;
+                            padding-top: 0.2rem;
+                        }
+
+                        p {
+                            font-size: 1.6rem;
+                            line-height: 2rem;
+                            padding: 0.5rem 0 0 0;
+                        }
+                    }
+                }
+
+                &::after {
+                    display: none;
+                }
+
+                &.awards {
+                    a {
+                        grid-template-columns: 1fr;
+                        flex-direction: column;
+
+                        .the-list-meta {
+                            align-items: flex-start;
+                            border: none;
+                            padding: 1rem 0 1rem 0;
+
+                            h2 {
+                                font-size: 2rem;
+                                margin: 0 0;
+                                padding-bottom: 1rem;
+                            }
+
+                            p {
+                                padding: 1rem 0 0 0;
+                            }
+                        }
+
+                        img, .the-list-meta {
+                            max-width: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

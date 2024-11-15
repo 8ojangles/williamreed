@@ -1,0 +1,175 @@
+/*
+	********************************************
+
+        Footer Structure
+
+	********************************************
+    	
+        1.   Sponsor header image styling
+        1.1  Sponsor header image styling for tablet
+        1.2  Sponsor header image styling for mobile
+        2.   Sponsor profile body content stylings
+        2.1  Sponsor profile body content stylings for tablet
+        2.2  Sponsor profile body content stylings for mobile
+
+	********************************************
+*/
+
+//Sponsor header styling is found in profile.scss
+
+// 1. Sponsor header image styling
+
+.row-background.sponsor-header-image {
+    background-position: -50%;   
+    background-color: $color-bg-section;
+    @include bg-pattern;
+ 
+    .row {
+       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAH0CAYAAAD8PUeXAAAABHNCSVQICAgIfAhkiAAAACdJREFUSEtj+A8EDKPEaBiMpoPRbDBaFIyWhKMl4WhJOFoSDqWSEAC+M8iaStPlcQAAAABJRU5ErkJggg==');
+       background-position: left calc(100% + 205px);
+       background-repeat: repeat-x;
+       display: flex;
+       justify-content: center;
+       width: 100%;
+       max-width: 100%;
+       padding: 0 2.5rem 6rem 2.5rem;
+       position: relative;
+ 
+       img {
+          height: auto;
+          width: 100%;
+          max-width: 95.4rem;
+       }
+ 
+       // 1.1 Sponsor header image styling for tablet
+ 
+       @include tablet {
+          background-position: left calc(100% + 305px);
+          padding: 0 2.5rem 4rem 2.5rem;
+       }
+ 
+       // 1.2 Sponsor header image styling for tablet
+ 
+       @include mobile {
+          background-position: left calc(100% + 375px);
+          padding: 0 2rem 3rem 2rem;
+ 
+          img {
+             max-height: 18.9rem;
+          }
+       }
+    }
+ }
+ 
+ 
+ // 2. Sponsor profile body content stylings
+ 
+ .row-background.sponsor-content {
+ 
+    .row {
+       padding: 0 2.5rem 6rem 2.5rem;
+       width: 85rem;
+       
+       a {
+          text-decoration: underline;
+       }
+ 
+       .logo-container {
+          border: 1px solid rgba(0,0,0,0.05);
+          box-sizing: border-box;
+          margin-left: 2rem;
+          float: right;
+          padding: 2rem;
+          text-align: center;
+          width: 40%;
+ 
+          img {
+             height: auto;
+             margin: 0 0 0 0;
+             padding: 0 0 0 0;
+             width: 100%;
+          }
+       }
+ 
+       .sponsor-social-list {
+          list-style-type: none;
+          padding: 0 0 3rem 0;
+ 
+          li {
+             background-size: 3rem 3rem;
+             background-repeat: no-repeat;
+             background-position-y: 1rem;
+             height: auto;
+             line-height: 3rem;
+             padding: 1rem 0 0 5rem;
+             margin: 0 0 2rem 0;
+ 
+             &.website {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Ccircle cx='15.031' cy='14.954' r='14' fill='%23fff'/%3E%3Cpath d='M15.031 29.954a14.98 14.98 0 0 1-15-15 14.98 14.98 0 0 1 15-15 14.98 14.98 0 0 1 15 15c0 8.3-6.8 15-15 15zm0-28c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13c0-7.1-5.9-13-13-13z'/%3E%3Cellipse cx='15.031' cy='14.954' rx='8' ry='14' fill='%23fff'/%3E%3Cpath d='M15.031 29.954c-5 0-9-6.6-9-15s4-15 9-15 9 6.6 9 15-4 15-9 15zm0-28c-3.8 0-7 6-7 13s3.2 13 7 13 7-6 7-13-3.2-13-7-13z'/%3E%3Cpath d='M27.331 10.854h-24.7a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h24.7a.94.94 0 0 1 1 1c0 .6-.5 1-1 1zm0 10.4h-24.7a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h24.7a.94.94 0 0 1 1 1c0 .6-.5 1-1 1z'/%3E%3C/svg%3E");
+             }
+ 
+             &.facebook {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M24.4 0H5.6A5.59 5.59 0 0 0 0 5.6v18.8A5.59 5.59 0 0 0 5.6 30h18.8a5.59 5.59 0 0 0 5.6-5.6V5.6A5.59 5.59 0 0 0 24.4 0zm-.8 16.2h-2.8v10.4h-4.7V16.2h-1.8v-3.5h1.8v-2.2c0-2.9 1.2-4.7 4.7-4.7h3.5v3.5h-2c-1.3 0-1.4.5-1.4 1.4v2H24l-.4 3.5z'/%3E%3C/svg%3E");
+             }
+ 
+             &.twitter {
+                background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' width='1200' height='1227' viewBox='0 0 1200 1227'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{stroke-width:0px;}%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='m714.163,519.284L1160.89,0h-105.86l-387.893,450.887L357.328,0H0l468.492,681.821L0,1226.37h105.866l409.625-476.152,327.181,476.152h357.328l-485.863-707.086h.026Zm-144.998,168.544l-47.468-67.894L144.011,79.694h162.604l304.797,435.991,47.468,67.894,396.2,566.721h-162.604l-323.311-462.446v-.026Z'/%3E%3C/svg%3E");
+             }
+ 
+             &.instagram {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M8.7 0A8.71 8.71 0 0 0 0 8.7v12.6A8.71 8.71 0 0 0 8.7 30h12.6a8.71 8.71 0 0 0 8.7-8.7V8.7A8.71 8.71 0 0 0 21.3 0H8.7zm0 2.3h12.6a6.38 6.38 0 0 1 6.4 6.4v12.6a6.38 6.38 0 0 1-6.4 6.4H8.7a6.38 6.38 0 0 1-6.4-6.4V8.7a6.38 6.38 0 0 1 6.4-6.4zm15 2.3c-1 0-1.7.8-1.7 1.7S22.8 8 23.7 8c1 0 1.7-.8 1.7-1.7s-.8-1.7-1.7-1.7zM15 6.9c-4.5 0-8.1 3.6-8.1 8.1s3.6 8.1 8.1 8.1 8.1-3.6 8.1-8.1-3.6-8.1-8.1-8.1zm0 2.3c3.2 0 5.8 2.6 5.8 5.8s-2.6 5.8-5.8 5.8-5.8-2.6-5.8-5.8 2.6-5.8 5.8-5.8z'/%3E%3C/svg%3E");
+             }
+ 
+             &.email {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M27.1 30H2.9C1.3 30 0 28.7 0 27.1V13.4c0-1.4.8-3.1 1.9-3.9l11-8.7c1.2-.9 3.1-.9 4.3 0h0l11 8.7c1.1.9 1.9 2.5 1.9 3.9v13.7c-.1 1.6-1.4 2.9-3 2.9zM15 2c-.3 0-.7.1-.9.3L3.1 11c-.6.5-1.1 1.6-1.1 2.4v13.7c0 .5.4.9.9.9h24.2c.5 0 .9-.4.9-.9V13.4c0-.8-.5-1.9-1.1-2.3l-11-8.7c-.2-.3-.6-.4-.9-.4z'/%3E%3Cpath d='M5.1 14.9V5.2h19.8v9.7' fill='%23fff'/%3E%3Cpath d='M24.9 15.9a.94.94 0 0 1-1-1V6.2H6.1v8.7a.94.94 0 0 1-1 1 .94.94 0 0 1-1-1V5.2a.94.94 0 0 1 1-1h19.7a.94.94 0 0 1 1 1v9.7c.1.6-.4 1-.9 1z'/%3E%3Cpath d='M15 23.8c-.8 0-1.5-.3-2.1-.8L.6 12.4c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l12.3 10.6c.4.4 1.2.4 1.6 0L28 11c.4-.4 1-.3 1.4.1s.3 1-.1 1.4L17.1 23c-.6.5-1.3.8-2.1.8z'/%3E%3Cpath d='M2.9 29c-1.1 0-1.3-.6-.4-1.2l11-9.1c.8-.7 2.1-.7 3 0l11 9.1c.8.7.6 1.2-.4 1.2H2.9z' fill='%23fff'/%3E%3Cpath d='M27.1 30H2.9c-1.3 0-1.7-.6-1.9-1s-.2-1.1.8-2l11-9.1c1.2-1 3.1-1 4.2 0L28 27c1 .8.9 1.6.8 2 0 .4-.4 1-1.7 1zM3.8 28h22.5l-10.4-8.6c-.4-.4-1.2-.4-1.7 0L3.8 28zM15 14.5c-1.5 0-2.7-1.2-2.7-2.8S13.5 9 15 9s2.7 1.2 2.7 2.8-1.2 2.7-2.7 2.7zm0-3.5c-.4 0-.7.3-.7.8s.3.8.7.8.7-.3.7-.8-.3-.8-.7-.8z'/%3E%3Cpath d='M17.9 14.5h-.4c-1.8-.3-1.8-2.1-1.8-2.7a.94.94 0 0 1 1-1 .94.94 0 0 1 1 1c0 .6.1.8.1.8.1-.1.2-.3.2-.6a.94.94 0 0 1 1-1 .94.94 0 0 1 1 1c0 .9-.3 1.7-.9 2.1-.3.2-.8.4-1.2.4z'/%3E%3Cpath d='M15,16.7c-2.8,0-5-2.3-5-5s2.3-5,5-5c2.8,0,5,2.3,5,5c0,0.6-0.4,1-1,1s-1-0.4-1-1c0-1.7-1.4-3-3-3s-3,1.4-3,3s1.4,3,3,3 c0.6,0,1,0.4,1,1C16,16.3,15.6,16.7,15,16.7z'/%3E%3C/svg%3E");
+             }
+          }
+       }
+ 
+       .become-a-sponsor-link {
+          font-weight: 700;
+ 
+          a {
+             text-decoration: underline;
+          }
+       }
+ 
+       // 2.1 Sponsor profile body content stylings for tablet
+ 
+       @include tablet {
+          padding: 0 2.5rem 4rem 2.5rem;
+       }
+ 
+       // 2.2 Sponsor profile body content stylings for mobile
+ 
+       @include mobile {
+          padding: 0 2rem 3rem 2rem;
+          width: 100%;
+ 
+          .logo-container {
+             border-top: 1px solid rgba(0,0,0,0.05);
+             border-bottom: 1px solid rgba(0,0,0,0.05);
+             border-right: none;
+             border-left: none;
+             margin-left: 0;
+             margin-bottom: 3rem;
+             width: 100%;
+ 
+             img {
+                display: block;
+                height: 120px;
+                margin: 0 auto;
+                width: auto;
+             }
+          }
+ 
+          .sponsor-social-list {
+ 
+             li {
+                padding: 1rem 0 0 4rem;
+                margin: 0 0 1rem 0;
+             }
+          }
+       }
+    }
+ }

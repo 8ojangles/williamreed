@@ -1,0 +1,309 @@
+// Typography Partial
+
+// Fontstack families
+
+$body-fontstack: "Gotham SSm A", "Gotham SSm B", sans-serif;
+$heading-fontstack: "Sentinel A", "Sentinel B", serif;
+$paragraph-fontstack: "Gotham SSm A", "Gotham SSm B", sans-serif;
+
+
+// Default body, link and selection styling 
+
+body {
+    font-family: $body-fontstack;
+    font-size: 1.8rem;
+	font-weight: 400;
+    line-height: 3rem;
+    padding: 0 0 2.5rem 0;
+
+    @include tablet {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+    }
+
+    @include mobile {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+}
+
+a {
+    color: $color-link;
+    text-decoration: none;
+    transition: all 0.25s ease;
+	
+    &:hover { 
+        color: $color-link-hover;
+        text-decoration: underline;
+    }
+}
+
+.action-button {
+    text-align: center;
+    margin-top: 6rem;
+
+    a {
+        border: none;
+        border-radius: 3px;
+        background-color: $color-button;
+        color: $color-button-text;
+        display: inline-block;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.8rem;
+        padding: 1.5rem 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: $color-button-hover;
+            text-decoration: none;
+        }
+    }
+
+    @include tablet {
+        margin-top: 4rem;
+    }
+
+    @include mobile {
+        margin-top: 3rem;
+
+        a {
+            font-size: 1.6rem;
+            padding: 1rem 1.5rem;
+        }
+    }
+}
+
+::selection {
+	background: $color-black-100;
+	color: $color-white-100;
+}
+
+// Header styles
+
+h1 {
+    font-family: $heading-fontstack;
+    font-weight: 700;
+    font-size: 4.5rem;
+    line-height: 6rem;
+    margin: 0 0 0 0;
+    padding: 0 0 3rem 0;
+}
+
+h2 {
+    font-family: $heading-fontstack;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 4rem;
+    margin: 0 0 0 0;
+    padding: 0 0 3rem 0;
+}
+
+h3 {
+    font-family: $heading-fontstack;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: normal;
+    margin: 0 0 0 0;
+    padding: 0 0 3rem 0;
+}
+
+h4 {
+    font-family: $heading-fontstack;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: normal;
+    margin: 0 0 0 0;
+    padding: 0 0 2rem 0;
+}
+
+h5 {
+    font-family: $heading-fontstack;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: normal;
+    margin: 0 0 0 0;
+    padding: 0 0 2rem 0;
+}
+
+h6 {
+    font-family: $heading-fontstack;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0 0 0 0;
+    padding: 0 0 2rem 0;
+    text-transform: uppercase;
+}
+
+@include tablet {
+
+    h1 {
+        font-size: 3.5rem;
+        line-height: 4.5rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    h3 {
+        font-size: 2.2rem;
+        line-height: 3rem;
+    }
+
+    h4 {
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+
+}
+
+@include mobile {
+
+    h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+        padding: 0 0 2rem 0;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+        padding: 0 0 2rem 0;
+    }
+
+    h3 {
+        font-size: 2rem;
+        line-height: 3rem;
+        padding: 0 0 1rem 0;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        padding: 0 0 1rem 0;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        padding: 0 0 1rem 0;
+    }
+
+}
+
+
+// Paragraph and emphasis styling
+
+p {
+    font-size: 1.8rem;
+    font-family: $paragraph-fontstack;
+	font-weight: 400;
+    line-height: 3rem;
+    padding: 0 0 2.5rem 0;
+}
+
+strong { font-weight: 700; }
+
+em { font-style: italic; }
+
+p + blockquote {
+	margin-top: 5rem;
+}
+
+blockquote {
+	box-sizing: border-box;
+	border-left: 5px solid $color-brand;
+	margin: 0 0 3.5rem 5rem;
+	padding: 2.5rem;
+}
+
+
+@include tablet {
+
+    p {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+    }
+
+}
+
+@include mobile {
+
+    p {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+
+}
+
+// Unordered and ordered list styling
+
+ul {
+    margin: 0 0 0 0;
+    padding: 0 0 3.5rem 2rem;
+    list-style-type: disc;
+	
+	li {
+        font-size: 1.8rem;
+        line-height: 3.5rem;
+		margin: 0 0 2rem 0;
+		padding: 0 0 0 0;
+
+        &:last-of-type {
+            margin: 0 0 0 0;
+        }
+	}
+}
+
+ol {
+    margin: 0 0 0 0;
+    padding: 0 0 3.5rem 2rem;
+    list-style-type: decimal;
+	
+	li {
+        font-size: 1.8rem;
+        line-height: 3.5rem;
+		margin: 0 0 2rem 0;
+		padding: 0 0 0 0;
+
+        &:last-of-type {
+            margin: 0 0 0 0;
+        }
+	}
+}
+
+@include tablet {
+
+    ul, ol {
+
+        li {
+            font-size: 1.6rem;
+            line-height: 3rem;
+        }
+    }
+
+}
+
+@include mobile {
+
+    ul, ol {
+
+        li {
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    ul, ol {
+        padding: 0 0 3rem 2rem;
+    }
+}

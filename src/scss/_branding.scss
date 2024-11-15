@@ -1,0 +1,73 @@
+
+// Branding colours
+
+$color-brand: rgba(0,0,0,1);  // Primary
+$color-brand-secondary: rgba(0,0,0,1);  // Secondary
+$color-brand-tertiary: rgba(0,0,0,1); // Tertiary
+
+$color-link: rgba(0,0,0,1);
+$color-link-hover: rgba(0,0,0,1);
+
+$color-button: rgba(0,0,0,1);
+$color-button-text: rgba(255,255,255,1);
+$color-button-hover: rgba(0,0,0,1);
+
+$color-button-alt: rgba(255,255,255,1);
+$color-button-alt-text: rgba(0,0,0,1);
+$color-button-alt-hover: rgba(255,255,255,1);
+
+// Box shadows
+
+$shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+
+// Whites 0-100% - Increments
+
+$color-white-100: rgba(255,255,255,1.0); // 100%
+$color-white-95: rgba(255,255,255,0.95); // 95%
+$color-white-90: rgba(255,255,255,0.90); // 90%
+$color-white-85: rgba(255,255,255,0.85); // 85%
+$color-white-80: rgba(255,255,255,0.80); // 80%
+$color-white-75: rgba(255,255,255,0.75); // 75%
+$color-white-70: rgba(255,255,255,0.70); // 70%
+$color-white-65: rgba(255,255,255,0.65); // 65%
+$color-white-60: rgba(255,255,255,0.60); // 60%
+$color-white-55: rgba(255,255,255,0.55); // 55%
+$color-white-50: rgba(255,255,255,0.50); // 50%
+$color-white-45: rgba(255,255,255,0.45); // 45%
+$color-white-40: rgba(255,255,255,0.40); // 40%
+$color-white-35: rgba(255,255,255,0.35); // 35%
+$color-white-30: rgba(255,255,255,0.30); // 30%
+$color-white-25: rgba(255,255,255,0.25); // 25%
+$color-white-20: rgba(255,255,255,0.20); // 20%
+$color-white-15: rgba(255,255,255,0.15); // 15%
+$color-white-10: rgba(255,255,255,0.10); // 10%
+$color-white-05: rgba(255,255,255,0.05); // 05%
+$color-white-02: rgba(255,255,255,0.02); // 02% 
+
+
+// Blacks 0-100% - Increments
+
+$color-black-100: rgba(0,0,0,1.0); // 100%
+$color-black-95: rgba(0,0,0,0.95); // 95%
+$color-black-90: rgba(0,0,0,0.90); // 90%
+$color-black-85: rgba(0,0,0,0.85); // 85%
+$color-black-80: rgba(0,0,0,0.80); // 80%
+$color-black-75: rgba(0,0,0,0.75); // 75%
+$color-black-70: rgba(0,0,0,0.70); // 70%
+$color-black-65: rgba(0,0,0,0.65); // 65%
+$color-black-60: rgba(0,0,0,0.60); // 60%
+$color-black-55: rgba(0,0,0,0.55); // 55%
+$color-black-50: rgba(0,0,0,0.50); // 50%
+$color-black-45: rgba(0,0,0,0.45); // 45%
+$color-black-40: rgba(0,0,0,0.40); // 40%
+$color-black-35: rgba(0,0,0,0.35); // 35%
+$color-black-30: rgba(0,0,0,0.30); // 30%
+$color-black-25: rgba(0,0,0,0.25); // 25%
+$color-black-20: rgba(0,0,0,0.20); // 20%
+$color-black-15: rgba(0,0,0,0.15); // 15%
+$color-black-10: rgba(0,0,0,0.10); // 10%
+$color-black-05: rgba(0,0,0,0.05); // 05%
+$color-black-02: rgba(0,0,0,0.02); // 02%

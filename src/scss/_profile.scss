@@ -1,0 +1,764 @@
+/*
+	********************************************
+
+      Profile Structure
+
+	********************************************
+    	
+        1.   Top and bottom navigation for the Profile page
+        2.   Profile header for Profile and Sponsor Profile
+        3.   Profile Gallery Carousel
+        4.   Profile body content
+        4.1  Profile google map iframe cover
+        5.   Places Nearby bottom carousel
+
+	********************************************
+*/
+
+// 1. Top and bottom navigation for the Profile page
+
+.row-background .row {
+
+    .profile-nav {
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       list-style-type: none;
+       padding: 0 0 6rem 0;
+       position: relative;
+ 
+       li {
+          margin: 0 0 0 0;
+       }
+ 
+       a {
+          font-size: 2.5rem;
+          font-family: "Sentinel A", "Sentinel B", serif; 
+          font-weight: 600;
+          color: #FFF;
+ 
+          &:hover {
+             color: $color-white-80;
+          }
+       }
+ 
+       .back-to-list {
+          position: absolute;
+          left: -20rem;
+       }
+ 
+       .previous-profile a {
+          background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 18.1' style='enable-background:new 0 0 30 18.1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23c39e6d;} %3C/style%3E%3Cpath id='left-arrow-icon' class='st0' d='M0.3,8.4l8.1-8.1c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l0,0L3.3,8.1H29c0.5,0,1,0.5,1,1 s-0.4,0.9-1,1H3.4l6.4,6.4c0.4,0.4,0.4,1,0,1.4s-1,0.4-1.4,0L0.3,9.7C-0.1,9.4-0.1,8.7,0.3,8.4L0.3,8.4z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center left;
+          background-size: 30px;
+          display: inline-block;
+          font-weight: 600;
+          padding: 0 0 0 5rem;
+       }
+ 
+       .next-profile a {
+          background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 18.1' style='enable-background:new 0 0 30 18.1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23c39e6d;} %3C/style%3E%3Cpath id='right-arrow-icon' class='st0' d='M29.7,8.4l-8.1-8.1c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l0,0l6.4,6.4H1c-0.5,0-1,0.5-1,1 s0.4,0.9,1,1h25.7l-6.4,6.4c-0.4,0.4-0.4,1,0,1.4s1,0.4,1.4,0l0,0l8.1-8.1C30.1,9.4,30.1,8.8,29.7,8.4L29.7,8.4z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center right;
+          background-size: 30px;
+          display: inline-block;
+          font-weight: 600;
+          padding: 0 5rem 0 0;
+       }
+ 
+       &.bottom {
+          padding: 6rem 0 6rem 0;
+ 
+          a {
+             color: $color-brand;
+ 
+             &:hover {
+                color: $color-black-60;
+             }
+          }
+ 
+          .previous-profile a {
+             background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 18.1' style='enable-background:new 0 0 30 18.1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23ab7f46;} %3C/style%3E%3Cpath id='left-arrow-icon' class='st0' d='M0.3,8.4l8.1-8.1c0.4-0.4,1-0.4,1.4,0s0.4,1,0,1.4l0,0L3.3,8.1H29c0.5,0,1,0.5,1,1 s-0.4,0.9-1,1H3.4l6.4,6.4c0.4,0.4,0.4,1,0,1.4s-1,0.4-1.4,0L0.3,9.7C-0.1,9.4-0.1,8.7,0.3,8.4L0.3,8.4z'/%3E%3C/svg%3E");
+          }
+    
+          .next-profile a {
+             background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 18.1' style='enable-background:new 0 0 30 18.1;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23ab7f46;} %3C/style%3E%3Cpath id='right-arrow-icon' class='st0' d='M29.7,8.4l-8.1-8.1c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l0,0l6.4,6.4H1c-0.5,0-1,0.5-1,1 s0.4,0.9,1,1h25.7l-6.4,6.4c-0.4,0.4-0.4,1,0,1.4s1,0.4,1.4,0l0,0l8.1-8.1C30.1,9.4,30.1,8.8,29.7,8.4L29.7,8.4z'/%3E%3C/svg%3E");
+          }
+       }
+ 
+       @include tablet {
+          padding: 0 0 4rem 0;
+          
+          a {
+             font-size: 2rem;
+          }
+ 
+          .back-to-list {
+             left: 0;
+             position: revert;
+          }
+ 
+          &.bottom {
+             padding: 4rem 0 4rem 0;
+          }
+       }
+ 
+       @include mobile {
+          padding: 0 0 3rem 0;
+ 
+          a {
+             font-size: 1.8rem;
+          }
+ 
+          .previous-profile a {
+             background-size: 30px;
+             padding: 0 0 0 4rem;
+          }
+ 
+          .next-profile a {
+             background-size: 30px;
+             padding: 0 4rem 0 0;
+          }
+ 
+          &.bottom {
+             padding: 3rem 0 3rem 0;
+          }
+       }
+    }
+ }
+ 
+ // 2. Profile header for Profile and Sponsor Profile
+ 
+ .row-background.profile {
+ 
+    .row {
+       padding: 6rem 2.5rem 6rem 2.5rem;
+       width: 85rem;
+ 
+       .profile-header {
+          box-sizing: border-box;
+          color: #FFF;
+          display: flex;
+          flex-direction: column;
+          margin: 0 auto;
+          position: relative;
+          width: 100%;
+ 
+          .profile-intro {
+             max-width: 83rem;
+ 
+             .profile-award {
+                font-size: 2.5rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                padding: 0 0 4rem 0;
+             }
+ 
+             .profile-position {
+                align-items: center;
+                box-sizing: border-box;
+                border-radius: 50%;
+                border: 3px solid $color-brand-tertiary;
+                color: #fff;
+                display: flex;
+                font-size: 4.5rem;
+                font-family: "Sentinel A","Sentinel B",serif;
+                height: 8rem;
+                justify-content: center;
+                line-height: 4.5rem;
+                margin-top: .5rem;
+                max-height: 8rem;
+                max-width: 8rem;
+                padding: 0 0 0 0;
+                position: absolute;
+                text-align: center;
+                right: 0;
+                width: 100%;
+ 
+                span {
+                   display: block;
+                   height: 5rem;
+                }
+             }
+ 
+             h1 {
+                padding: 0 8rem 3rem 0;
+ 
+                @include heading-1-underline;
+             }
+ 
+             h2 {
+                font-family:"Gotham SSm A", "Gotham SSm B", sans-serif;
+                font-size: 2rem;
+                color: $color-white-80;
+                padding: 3rem 0 0 0;
+             }
+ 
+             p {
+                padding: 3.5rem 0 0 0;
+             }
+ 
+             &.sponsor {
+                h2 {
+                   color: #FFFFFF;
+                   font-size: 2.5rem;
+                }
+             }
+          }
+       }
+ 
+       .profile-socials {
+          list-style-type: none;
+          padding: 0 0 0 0;
+          position: absolute;
+          right: -13rem;
+ 
+          li {
+             margin: 0 0 0 0;
+             padding: 0 0 2rem 0;
+ 
+             a {
+                display: inline-block;
+                height: 2.5rem;
+                width: 2.5rem;
+             }
+             
+             &:last-of-type {
+                padding: 0 0 0 0;
+             }
+          }
+       }
+ 
+       @include tablet {
+          padding: 4rem 2.5rem 4rem 2.5rem;
+ 
+ 
+          .profile-header {
+ 
+             .profile-socials {
+                display: flex;
+                height: 2.5rem;
+                margin-top: 4rem;
+                padding: 0 0 0 0;
+                position: revert;
+ 
+                li {
+                   padding: 0 3rem 0 0;
+                }
+             }
+ 
+             .profile-intro {
+ 
+                .profile-award {
+                   font-size: 2rem;
+                   padding: 0 0 3rem 0;
+                }
+ 
+                .profile-position {
+                   font-size: 3.5rem;
+                   height: 6rem;
+                   line-height: 3.5rem;
+                   max-height: 6rem;
+                   max-width: 6rem;
+                   
+                   span {
+                      display: block;
+                      height: 4rem;
+                   }
+                }
+ 
+                h1 {
+                   padding: 0 6rem 2.5rem 0;
+                }
+ 
+                h2 {
+                   font-size: 1.8rem;
+                   line-height: 3rem;
+                   padding: 2.5rem 0 0 0;
+                }
+ 
+                p {
+                   padding: 2.5rem 0 0 0;
+                }
+ 
+                &.sponsor {
+                   min-height: revert;
+ 
+                   h2 {
+                      font-size: 2rem;
+                      line-height: 3rem;
+                   }
+                }
+             }
+          }
+       }
+ 
+       @include mobile {
+          padding: 3rem 2rem 3rem 2rem;
+ 
+          &.sponsor {
+             padding: 4rem 2.5rem 0 2.5rem;
+          }
+ 
+          .profile-header {
+ 
+             .profile-socials {
+                margin-top: 3rem;
+ 
+                li {
+                   padding: 0 3rem 0 0;
+                }
+             }
+ 
+             .profile-intro {
+ 
+                .profile-award {
+                   font-size: 1.8rem;
+                   padding: 0 0 2rem 0;
+                }
+ 
+                .profile-position {
+                   font-size: 3rem;
+                   height: 5rem;
+                   line-height: 3rem;
+                   max-height: 5rem;
+                   max-width: 5rem;
+ 
+                   span {
+                      display: block;
+                      height: 3.5rem;
+                   }
+                }
+ 
+                h1 {
+                   padding: 0 6rem 2rem 0;
+                }
+ 
+                h2 {
+                   font-size: 1.5rem;
+                   line-height: 2.5rem;
+                   padding: 2rem 0 0 0;
+                }
+ 
+                p {
+                   padding: 2rem 0 0 0;
+                }
+                
+                &.sponsor {
+ 
+                   h2 {
+                      font-size: 1.8rem;
+                      line-height: 3rem;
+                   }
+                }
+             }
+          }
+       }
+    }
+ }
+ 
+ // 3. Profile Gallery Carousel
+ 
+ .row-background.profile-gallery {
+    background-position: -50%;   
+    background-color: $color-bg-section;
+    @include bg-pattern;
+ 
+    .row {
+       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAH0CAYAAAD8PUeXAAAABHNCSVQICAgIfAhkiAAAACdJREFUSEtj+A8EDKPEaBiMpoPRbDBaFIyWhKMl4WhJOFoSDqWSEAC+M8iaStPlcQAAAABJRU5ErkJggg==');
+       background-position: left calc(100% + 173px);
+       background-repeat: repeat-x;
+       padding: 0 0 6rem 0;
+       width: 100%;
+       max-width: 100%;
+       position: relative;
+ 
+       @include tablet {
+          background-position: left calc(100% + 294px);
+          padding: 0 0 4rem 0;
+       }
+ 
+       @include mobile {
+          background-position: left calc(100% + 375px);
+          padding: 0 0 3rem 0;
+       }      
+ 
+       .half-background {
+          background: white;
+          height: calc(50% + 1.5rem);
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          width: 100%;
+          z-index: 0;
+       }
+ 
+       #profile-gallery {
+          z-index: 1;
+ 
+          .splide__arrow {
+             background: $color-brand-tertiary;
+             height: 4rem;
+             opacity: 1;
+             width: 4rem;
+          }
+ 
+       }
+ 
+       @include tablet {
+ 
+          #profile-gallery {
+    
+             .splide__arrow {
+                height: 3rem;
+                width: 3rem;
+             }
+          }
+       }
+ 
+       @include mobile {
+          #profile-gallery {
+ 
+             .splide__arrow--next {
+                right: 0.5em;
+             }
+             
+             .splide__arrow--prev {
+                left: 0.5em;
+             }
+          }
+       }
+    }
+ }
+ 
+ // 4. Profile body content
+ 
+ .row-background.profile-content {
+ 
+    .row {
+       width: 85rem;
+ 
+       &.hotel-profile {
+          padding: 0 2.5rem;
+ 
+          @include tablet {
+             padding: 0 2.5rem;
+          }
+ 
+          @include mobile {
+             padding: 0 2rem;
+          }
+       }
+ 
+       .content {
+ 
+          .accolades {
+             align-items: center;
+             border: 1px solid $color-link;
+             display: flex;
+             flex-direction: row;
+             justify-content: space-between;
+             margin: 0 0 3.5rem 0;
+             padding: 2.5rem 2rem;
+ 
+             @include mobile {
+                flex-direction: column;
+             }
+ 
+             img {
+                padding: 0 0 0 0;
+             }
+ 
+             ul {
+ 
+                display: flex;
+                font-size: 1.6rem;
+                border-left: 2px solid $color-link;
+                flex-grow: 1;
+                flex-direction: column;
+                list-style: none;
+                margin: 0 0 0 2rem;
+                justify-content: center;
+                min-height: 35px;
+                padding: 0 2rem 0 2rem;
+                position: relative;
+                text-align: left;
+ 
+                @include mobile {
+                   border-left: 0;
+                   text-align: center;
+                   margin: 2rem 0 0 0;
+                   padding-top: 1.5rem;
+ 
+                   &::before {
+                      border-bottom: 2px solid $color-brand-tertiary;
+                      content: "";
+                      top: 0;
+                      left: calc(50% - 2rem);
+                      position: absolute;
+                      width: 4rem;
+                   }
+                   
+                }
+ 
+                li {
+                   font-family: $heading-fontstack;
+                   margin:  0 0 0 0;
+                   line-height: 2.4rem;
+                   padding: 0 0 0 0;
+                }
+             }
+          }
+       }
+ 
+       .profile-meta {
+          padding-top: 2rem;
+                 
+          h3 {
+             font-weight: 700;
+             font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+             letter-spacing: -0.025em;
+             padding: 0 0 2.5rem 0;
+ 
+             @include heading-3-underline;
+ 
+          }
+ 
+          .key-info-list {
+             column-count: 2;
+             justify-content: space-between;
+             list-style-type: none;
+             padding: 2rem 0 5rem 0;
+ 
+             &.contact {
+                column-count: 1;
+                padding: 2rem 0 0 0;
+             }
+ 
+             li {
+                background-size: 3rem 3rem;
+                background-repeat: no-repeat;
+                background-position-y: 1rem;
+                height: auto;
+                line-height: 3rem;
+                padding: 1rem 0 0 5rem;
+                margin: 0 0 2rem 0;
+ 
+                &.specialities {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 30' style='enable-background:new 0 0 30 30;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .Drop_x0020_Shadow{fill:none;} .Outer_x0020_Glow_x0020_5_x0020_pt{fill:none;} .Blue_x0020_Neon{fill:none;stroke:%238AACDA;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;} .Chrome_x0020_Highlight{fill:url(%23SVGID_1_);stroke:%23FFFFFF;stroke-width:0.3629;stroke-miterlimit:1;} .Jive_GS{fill:%23FFDD00;} .Alyssa_GS{fill:%23A6D0E4;} .st0{fill:none;stroke:%23000000;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;} %3C/style%3E%3ClinearGradient id='SVGID_1_' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='6.123234e-17' y2='-1'%3E%3Cstop offset='0' style='stop-color:%23656565'/%3E%3Cstop offset='0.618' style='stop-color:%231B1B1B'/%3E%3Cstop offset='0.6292' style='stop-color:%23545454'/%3E%3Cstop offset='0.9831' style='stop-color:%233E3E3E'/%3E%3C/linearGradient%3E%3Cg%3E%3Cline class='st0' x1='2.9553' y1='5.3077' x2='17.8718' y2='5.3077'/%3E%3Cline class='st0' x1='21.4615' y1='5.3077' x2='27.0448' y2='5.3077'/%3E%3Cpath class='st0' d='M2.7949,1v2.8718c0,3.5686,2.175,6.4615,5.7436,6.4615H8.704c0.6701,0,1.2468,0.4653,1.3953,1.1188 C10.6079,13.6892,12.6089,15.359,15,15.359s4.3921-1.6698,4.9006-3.9069c0.1485-0.6535,0.7252-1.1188,1.3953-1.1188h0.1656 c3.5686,0,5.7436-2.8929,5.7436-6.4615V1H2.7949z'/%3E%3Cline class='st0' x1='15' y1='15.359' x2='15' y2='29'/%3E%3Cline class='st0' x1='10.6923' y1='29' x2='19.3077' y2='29'/%3E%3C/g%3E%3C/svg%3E");
+                }
+ 
+                &.chef {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23161616;}%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M24.4,25.22a.34.34,0,0,1-.01.1v-.2A.3083.3083,0,0,1,24.4,25.22Z'/%3E%3Cpath class='cls-1' d='M23.39,5.72a6.5624,6.5624,0,0,0-1.82.26,6.5931,6.5931,0,0,0-13.13.01,6.2857,6.2857,0,0,0-1.83-.27,6.7272,6.7272,0,0,0-1,13.36V29a.9965.9965,0,0,0,1,1H23.39a.9965.9965,0,0,0,1-1V19.08a6.7272,6.7272,0,0,0-1-13.36ZM22.39,28H7.61V26.22H22.39Zm1-10.85a1.0029,1.0029,0,0,0-1,1v6.07H19.02V18.65a1,1,0,0,0-2,0v5.57H12.98V18.65a1,1,0,0,0-2,0v5.57H7.61V18.15a1.0029,1.0029,0,0,0-1-1,4.7162,4.7162,0,0,1,0-9.43,4.4779,4.4779,0,0,1,1.94.44,6.551,6.551,0,0,0,.66,1.79A1,1,0,0,0,10.97,9a4.9651,4.9651,0,0,1-.51-1.49c-.01-.04-.01-.09-.02-.13a.4869.4869,0,0,1-.01-.12,4.8863,4.8863,0,0,1-.03-.54,4.6064,4.6064,0,1,1,9.21,0,3.2723,3.2723,0,0,1-.04.54.4869.4869,0,0,1-.01.12.09.09,0,0,1-.01.05A4.841,4.841,0,0,1,19.03,9a1,1,0,0,0,1.76.95,6.551,6.551,0,0,0,.66-1.79,4.4779,4.4779,0,0,1,1.94-.44,4.7162,4.7162,0,0,1,0,9.43Z'/%3E%3C/svg%3E");
+                }
+ 
+                &.rooms {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M27.6 30h-7.9a.94.94 0 0 1-1-1v-7c0-.3.1-.5.3-.7l3.9-4c.2-.2.4-.3.7-.3h0c.3 0 .5.1.7.3l3.9 4c.2.2.3.4.3.7v7c.1.6-.3 1-.9 1zm-6.8-2h5.9v-5.6l-2.9-3-2.9 3V28zM14.5 6.4h-4.1a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h4.1a.94.94 0 0 1 1 1c0 .6-.5 1-1 1zm0 6.7h0H3.2c-.3 0-.7-.2-.8-.5L.2 9.3C0 9 0 8.5.2 8.2l2.2-3.3c.2-.3.5-.5.8-.5h3.1a.94.94 0 0 1 1 1 .94.94 0 0 1-1 1H3.7L2.2 8.7 3.7 11h10.7a.94.94 0 0 1 1 1c0 .6-.4 1.1-.9 1.1z'/%3E%3Cpath d='M8.3 8.6c-.3 0-.6-.1-.7-.3l-2-2.2c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.3 1.4 1.3-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4L9 8.3c-.2.2-.4.3-.7.3zm15.4 3.3c-.8 0-1.6-.3-2.2-.9s-.9-1.4-.9-2.2.3-1.6.9-2.2 1.4-.9 2.2-.9h0 0c.8 0 1.6.3 2.2.9s.9 1.4.9 2.2a3.12 3.12 0 0 1-3.1 3.1zm0-4.3c-.3 0-.6.1-.8.3s-.3.5-.3.8.1.6.3.8.5.3.8.3c.6 0 1.1-.5 1.1-1.2 0-.3-.1-.6-.3-.8-.2-.1-.5-.2-.8-.2h0zm-3.4 9.8h-.1c-2.9-.4-5.3-2.3-6.5-4.9-.2-.5 0-1.1.5-1.3s1.1 0 1.3.5c.9 2 2.8 3.5 5 3.8.5.1.9.6.8 1.1-.1.4-.5.8-1 .8zm6.4-2.1c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4 1.3-1.3 2-3 2-4.8s-.7-3.5-1.9-4.8-2.9-2-4.7-2h0 0c-3.4 0-6.2 2.6-6.6 5.9-.1.5-.6.9-1.1.9-.5-.1-.9-.6-.9-1.1C13.4 3.3 17 0 21.4 0h0c2.3 0 4.5.9 6.1 2.6C29.1 4.2 30 6.4 30 8.7c0 2.4-.9 4.6-2.6 6.3-.2.2-.4.3-.7.3z'/%3E%3Cpath d='M23.7 19a.94.94 0 0 1-1-1v-7.1a.94.94 0 0 1 1-1 .94.94 0 0 1 1 1V18c0 .5-.4 1-1 1z'/%3E%3C/svg%3E");
+                }
+ 
+                &.website {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Ccircle cx='15.031' cy='14.954' r='14' fill='%23fff'/%3E%3Cpath d='M15.031 29.954a14.98 14.98 0 0 1-15-15 14.98 14.98 0 0 1 15-15 14.98 14.98 0 0 1 15 15c0 8.3-6.8 15-15 15zm0-28c-7.2 0-13 5.8-13 13s5.8 13 13 13 13-5.8 13-13c0-7.1-5.9-13-13-13z'/%3E%3Cellipse cx='15.031' cy='14.954' rx='8' ry='14' fill='%23fff'/%3E%3Cpath d='M15.031 29.954c-5 0-9-6.6-9-15s4-15 9-15 9 6.6 9 15-4 15-9 15zm0-28c-3.8 0-7 6-7 13s3.2 13 7 13 7-6 7-13-3.2-13-7-13z'/%3E%3Cpath d='M27.331 10.854h-24.7a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h24.7a.94.94 0 0 1 1 1c0 .6-.5 1-1 1zm0 10.4h-24.7a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h24.7a.94.94 0 0 1 1 1c0 .6-.5 1-1 1z'/%3E%3C/svg%3E");
+                }
+ 
+                &.address {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' style='enable-background:new 0 0 30 30;' xml:space='preserve'%3E%3Cg id='address-icon' transform='translate(-206.402 -108.795)'%3E%3Cpath d='M222.1,122c-1.1,0-2.2-0.4-3-1.2c-0.8-0.8-1.2-1.9-1.2-3c0-1.1,0.4-2.2,1.2-3c0.8-0.8,1.9-1.2,3-1.2c0,0,0,0,0,0 c1.1,0,2.2,0.4,3,1.2c0.8,0.8,1.2,1.9,1.2,3l0,0C226.4,120.1,224.5,122,222.1,122C222.1,122,222.1,122,222.1,122z M222.1,115.5 C222.1,115.5,222.1,115.5,222.1,115.5c-0.6,0-1.2,0.2-1.6,0.7c-0.4,0.4-0.7,1-0.7,1.6c0,0.6,0.2,1.2,0.7,1.6c0.4,0.4,1,0.7,1.6,0.7 c0,0,0,0,0,0c1.2,0,2.2-1,2.2-2.2v0c0-0.6-0.2-1.2-0.7-1.6S222.7,115.5,222.1,115.5z M226.4,117.8L226.4,117.8L226.4,117.8z'/%3E%3Cpath d='M222.1,130c-0.3,0-0.5-0.1-0.7-0.3l-5.6-5.6l0,0c-3.5-3.5-3.5-9.2,0-12.6c1.7-1.7,3.9-2.6,6.3-2.6c0,0,0,0,0,0 c2.4,0,4.6,0.9,6.3,2.6c3.5,3.5,3.5,9.2,0,12.6l-5.6,5.6C222.7,129.9,222.4,130,222.1,130z M217.2,122.6l4.9,4.9l4.9-4.9 c2.7-2.7,2.7-7.1,0-9.8c-1.3-1.3-3.1-2-4.9-2c0,0,0,0,0,0c-1.9,0-3.6,0.7-4.9,2C214.5,115.5,214.5,119.9,217.2,122.6L217.2,122.6z' /%3E%3Cg%3E%3Cpath d='M226.2,138.8h-10c-0.6,0-1-0.4-1-1s0.4-1,1-1h10c0.6,0,1,0.4,1,1S226.8,138.8,226.2,138.8z'/%3E%3Cpath d='M235.4,123.4h-3.1c-0.6,0-1-0.4-1-1s0.4-1,1-1h3.1c0.6,0,1,0.4,1,1S236,123.4,235.4,123.4z'/%3E%3Cpath d='M217.7,131.1h-6.5c-2.7,0-4.8-2.2-4.8-4.8c0-2.6,2-4.7,4.6-4.8l0.4,0c0.6,0,1,0.4,1,1s-0.4,1-1,1h-0.3 c-1.5,0.1-2.6,1.3-2.7,2.8c0,1.6,1.3,2.8,2.8,2.8h6.5c0.6,0,1,0.4,1,1S218.3,131.1,217.7,131.1z'/%3E%3Cpath d='M226.3,138.8c-0.6,0-1-0.4-1-1c0-0.6,0.4-1,1-1c0.8,0,1.5-0.3,2-0.8c0.5-0.5,0.8-1.2,0.8-2c0-1.4-1-2.5-2.3-2.8h-0.3 c-0.6,0-1-0.4-1-1s0.4-1,1-1h0.4c0,0,0.1,0,0.1,0c2.4,0.4,4.1,2.4,4.1,4.8c0,1.3-0.5,2.5-1.4,3.4 C228.8,138.3,227.5,138.8,226.3,138.8L226.3,138.8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                }
+ 
+                &.amenities {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M25.4 30H11c-2 0-3.6-1.5-3.7-3.4l-.9-20a.94.94 0 0 1 1-1c.5 0 1 .4 1 1l.9 20c0 .8.8 1.5 1.7 1.5h14.4c.9 0 1.7-.6 1.7-1.5L28 8.1H10.2a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1H29c.3 0 .5.1.7.3s.3.4.3.7l-.9 19.5c-.1 1.9-1.7 3.4-3.7 3.4z'/%3E%3Cpath d='M22.5 26h-8.7c-3.3 0-6-2.3-6.4-5.4l-.7-5.7c-.1-.5.3-1 .9-1.1.5-.1 1 .3 1.1.9l.7 5.7c.2 2.1 2.1 3.6 4.4 3.6h8.7c2.2 0 4.1-1.6 4.4-3.6l.7-5.7c.1-.5.6-.9 1.1-.9.5.1.9.6.9 1.1l-.7 5.7c-.4 3.1-3.1 5.4-6.4 5.4zm-5.3-13.6H8.1a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h9.1a.94.94 0 0 1 1 1c0 .6-.5 1-1 1zm11.3 0h-2.7a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h2.7a.94.94 0 0 1 1 1c0 .6-.5 1-1 1zM7.2 4.6a.94.94 0 0 1-1-1V1.3a.94.94 0 0 1 1-1 .94.94 0 0 1 1 1v2.3c0 .6-.5 1-1 1z'/%3E%3Cpath d='M4.7 13.1c-.1 0-.3 0-.4-.1-.7-.3-1.4-.7-2-1.2C.9 10.5 0 8.7 0 6.8 0 3.1 3.2 0 7.2 0c2.8 0 5.2 1.5 6.5 3.8.3.5.1 1.1-.4 1.3-.5.3-1.1.1-1.3-.4C11 3.1 9.2 2 7.2 2 4.3 2 2 4.2 2 6.8c0 1.3.6 2.6 1.6 3.5.4.4.9.7 1.5.9.5.2.8.8.5 1.3-.1.4-.5.6-.9.6z'/%3E%3Cpath d='M4.1 7.5H1.6a.94.94 0 0 1-1-1 .94.94 0 0 1 1-1h2.5a.94.94 0 0 1 1 1c0 .6-.5 1-1 1zm3.1 0a1.08 1.08 0 0 1-.7-.3L2.6 3.6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l3.9 3.7c.4.4.4 1 0 1.4-.2.1-.4.2-.7.2z'/%3E%3Cpath d='M3.3 11.2c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l7.9-7.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-8 7.5c-.2.1-.4.2-.6.2zm13 12H16l-5.1-1.5c-.3-.1-.5-.3-.6-.5s-.2-.5-.1-.8l1.6-4.8c.2-.5.7-.8 1.2-.6l5.1 1.5c.3.1.5.3.6.5s.2.5.1.8l-1.6 4.8c-.1.4-.5.6-.9.6zm-3.8-3.1l3.1.9.9-2.9-3.1-.9-.9 2.9zm9-1.7a1.08 1.08 0 0 1-.7-.3L17 14.6a1.08 1.08 0 0 1-.3-.7 1.08 1.08 0 0 1 .3-.7l3.8-3.5c.4-.4 1-.4 1.4 0l3.8 3.5a1.08 1.08 0 0 1 .3.7 1.08 1.08 0 0 1-.3.7l-3.8 3.5a1.08 1.08 0 0 1-.7.3zm-2.3-4.5l2.3 2.1 2.3-2.1-2.3-2.1-2.3 2.1z'/%3E%3C/svg%3E");
+                }
+ 
+                &.dining {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M6.3 29.9c-.9 0-1.7-.3-2.2-.9-1.4-1.5-.9-4.1.4-5.5 3.2-3.5 12.4-12.9 12.4-13 .4-.4 1-.4 1.4 0s.4 1 0 1.4c.1 0-9.1 9.4-12.3 12.9-.7.8-1 2.3-.4 2.9.2.2.4.3.7.3.5 0 1.2-.3 1.6-.8 3.2-3.5 11.6-13.6 11.7-13.7.4-.4 1-.5 1.4-.1s.5 1 .1 1.4c-.1.1-8.5 10.2-11.7 13.7-.8.9-2 1.4-3.1 1.4z'/%3E%3Cpath d='M17.7 12.2c-.6 0-1-.5-1-1v-.8c0-.6.1-1.2.1-1.8.2-3.6 2.3-6.3 5.6-7.5 2.6-.9 5.3-.6 6.5.8.4.4.3 1-.1 1.4s-1 .3-1.4-.1c-.6-.6-2.4-.9-4.4-.2-1.2.4-4 1.8-4.2 5.5 0 .6 0 1.3-.1 1.9v.8c0 .5-.4 1-1 1z'/%3E%3Cpath d='M20.4 15.1c-.5 0-1-.4-1-1a.94.94 0 0 1 1-1h.7c.5 0 1.1-.1 1.8-.1 2.7-.2 4-2.5 4.6-3.8 1-2.6.7-5.2.1-5.9-.4-.4-.3-1 .1-1.4s1-.3 1.4.1c1.4 1.5 1.5 5 .3 8s-3.5 4.8-6.3 5c-.7 0-1.2 0-1.7.1h-1zm-7.8 2.4c-.3 0-.6-.1-.8-.4-.7-.9-1.9-2.7-1.9-2.8-.3-.5-.2-1.1.3-1.4s1.1-.2 1.4.3l1.8 2.6c.3.4.3 1.1-.2 1.4-.2.2-.4.3-.6.3zM24.3 30c-1.1 0-2.3-.5-3.1-1.4-1.3-1.5-3.5-4.1-6.5-7.8-.3-.4-.3-1.1.2-1.4.4-.3 1.1-.3 1.4.2 2.9 3.6 5.1 6.3 6.5 7.7.4.5 1 .8 1.6.8.3 0 .6-.1.7-.3.5-.6.3-2-.4-2.9-1.3-1.5-3.8-4-7.3-7.4-.4-.4-.4-1 0-1.4s1-.4 1.4 0c3.5 3.4 6 5.9 7.3 7.5 1.3 1.5 1.8 4 .4 5.5-.5.6-1.3.9-2.2.9zm-9.2-15.1c-.3 0-.5-.1-.7-.3-.8-.8-2.4-2-2.5-2.1-.2-.2-.4-.5-.4-.8a.94.94 0 0 1 1-1c.5 0 1.5.8 3.2 2.5.4.4.4 1 0 1.4-.1.2-.3.3-.6.3z'/%3E%3Cpath d='M12.6 12.7c-.5 0-.9-.4-1-.9v-.4l-.3-2.9c0-.7-.3-1.2-1.3-2.4L6 1.7C5.6 1.3 5.6.6 6 .3c.4-.4 1-.3 1.4.1l4 4.4c1.2 1.4 1.7 2.4 1.8 3.6 0 .6.2 2 .3 2.9v.4c.1.5-.3 1-.9 1.1v-.1z'/%3E%3Cpath d='M5.4 13.2a1.08 1.08 0 0 1-.7-.3 1.07 1.07 0 0 1-.1-1.4l5.7-6.3a1.07 1.07 0 0 1 1.4-.1 1.07 1.07 0 0 1 .1 1.4l-5.7 6.3c-.2.3-.4.4-.7.4z'/%3E%3Cpath d='M10.7 14.8h-.1-.3l-2.6-.3c-1.4-.1-2.3-.9-3.4-2L.3 8c-.4-.4-.3-1 .1-1.4s1-.3 1.4.1l4 4.4c1 1.1 1.5 1.3 2 1.4.6 0 1.9.2 2.7.3h.3c.5.1.9.6.9 1.1-.1.5-.5.9-1 .9zm-3.5-3.9c-.3 0-.5-.1-.7-.3L2.2 5.9c-.4-.4-.3-1 .1-1.4s1-.3 1.4.1L8 9.3c.4.4.3 1-.1 1.4-.3.1-.5.2-.7.2zm1.9-2.1c-.3 0-.5-.1-.7-.3L4.1 3.8c-.4-.4-.3-1 .1-1.4.3-.4 1-.4 1.3 0l4.3 4.7c.4.4.3 1-.1 1.4-.1.2-.4.3-.6.3z'/%3E%3C/svg%3E");
+                }
+ 
+                &.phone {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M29 14.9c-.6 0-1-.5-1-1 0-3.1-1.2-6.1-3.4-8.3s-5.1-3.5-8.3-3.5c-.6 0-1-.5-1-1a1.08 1.08 0 0 1 1-1c3.7 0 7.1 1.5 9.7 4.1s4 6.1 3.9 9.8c.1.5-.3.9-.9.9zm-5.1-.1c-.6 0-1-.5-1-1 0-1.8-.7-3.4-1.9-4.7s-2.9-2-4.6-2c-.6 0-1-.5-1-1a1.08 1.08 0 0 1 1-1c2.3 0 4.4.9 6 2.6 1.6 1.6 2.5 3.8 2.5 6.1 0 .6-.5 1-1 1zM22 30c-2.9 0-9-2.5-14.2-7.7C2.2 16.8-.3 10.2 0 7.6.4 5.1 2.2 2 4.6 1.3 7.3.5 8.3 2.5 9.3 4.4l.4.6c1.3 2.5 2.4 4.6 1.2 5.9-.4.4-1 .8-1.4 1.1.5 1 1.6 2.9 3.7 5s4 3.2 5 3.7c.3-.4.6-1 1-1.4 1.2-1.3 3.4-.1 5.9 1.1l.6.3c1.9 1 4 2 3.2 4.7-.7 2.5-3.8 4.3-6.3 4.6H22zM5.8 3.1c-.2 0-.3 0-.6.1-1.6.5-2.9 2.9-3.2 4.7-.2 1.5 1.6 7.4 7.2 13s11.5 7.3 13 7.1c1.8-.2 4.2-1.6 4.7-3.2.3-1 .1-1.2-2.1-2.3l-.6-.3c-1.2-.6-3.1-1.6-3.7-1.4-.4.5-.9 1.3-1 1.6a.88.88 0 0 1-1.2.5c-.1 0-3.1-1-6.6-4.5S7.2 12 7.2 11.8c-.2-.5.1-1 .5-1.2a5.94 5.94 0 0 0 1.7-1.1c.1-.5-.9-2.4-1.5-3.6l-.3-.6c-.9-1.7-1.2-2.2-1.8-2.2z'/%3E%3C/svg%3E");
+                }
+ 
+                &.email {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M27.1 30H2.9C1.3 30 0 28.7 0 27.1V13.4c0-1.4.8-3.1 1.9-3.9l11-8.7c1.2-.9 3.1-.9 4.3 0h0l11 8.7c1.1.9 1.9 2.5 1.9 3.9v13.7c-.1 1.6-1.4 2.9-3 2.9zM15 2c-.3 0-.7.1-.9.3L3.1 11c-.6.5-1.1 1.6-1.1 2.4v13.7c0 .5.4.9.9.9h24.2c.5 0 .9-.4.9-.9V13.4c0-.8-.5-1.9-1.1-2.3l-11-8.7c-.2-.3-.6-.4-.9-.4z'/%3E%3Cpath d='M5.1 14.9V5.2h19.8v9.7' fill='%23fff'/%3E%3Cpath d='M24.9 15.9a.94.94 0 0 1-1-1V6.2H6.1v8.7a.94.94 0 0 1-1 1 .94.94 0 0 1-1-1V5.2a.94.94 0 0 1 1-1h19.7a.94.94 0 0 1 1 1v9.7c.1.6-.4 1-.9 1z'/%3E%3Cpath d='M15 23.8c-.8 0-1.5-.3-2.1-.8L.6 12.4c-.4-.4-.5-1-.1-1.4s1-.5 1.4-.1l12.3 10.6c.4.4 1.2.4 1.6 0L28 11c.4-.4 1-.3 1.4.1s.3 1-.1 1.4L17.1 23c-.6.5-1.3.8-2.1.8z'/%3E%3Cpath d='M2.9 29c-1.1 0-1.3-.6-.4-1.2l11-9.1c.8-.7 2.1-.7 3 0l11 9.1c.8.7.6 1.2-.4 1.2H2.9z' fill='%23fff'/%3E%3Cpath d='M27.1 30H2.9c-1.3 0-1.7-.6-1.9-1s-.2-1.1.8-2l11-9.1c1.2-1 3.1-1 4.2 0L28 27c1 .8.9 1.6.8 2 0 .4-.4 1-1.7 1zM3.8 28h22.5l-10.4-8.6c-.4-.4-1.2-.4-1.7 0L3.8 28zM15 14.5c-1.5 0-2.7-1.2-2.7-2.8S13.5 9 15 9s2.7 1.2 2.7 2.8-1.2 2.7-2.7 2.7zm0-3.5c-.4 0-.7.3-.7.8s.3.8.7.8.7-.3.7-.8-.3-.8-.7-.8z'/%3E%3Cpath d='M17.9 14.5h-.4c-1.8-.3-1.8-2.1-1.8-2.7a.94.94 0 0 1 1-1 .94.94 0 0 1 1 1c0 .6.1.8.1.8.1-.1.2-.3.2-.6a.94.94 0 0 1 1-1 .94.94 0 0 1 1 1c0 .9-.3 1.7-.9 2.1-.3.2-.8.4-1.2.4z'/%3E%3Cpath d='M15,16.7c-2.8,0-5-2.3-5-5s2.3-5,5-5c2.8,0,5,2.3,5,5c0,0.6-0.4,1-1,1s-1-0.4-1-1c0-1.7-1.4-3-3-3s-3,1.4-3,3s1.4,3,3,3 c0.6,0,1,0.4,1,1C16,16.3,15.6,16.7,15,16.7z'/%3E%3C/svg%3E");
+                }
+ 
+                &.price{
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M12.661 13.613c-.3 0-.5-.1-.7-.3l-.9-.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l.9.9c.4.4.4 1 0 1.4a1.08 1.08 0 0 1-.7.3zm8.2 8.2c-.3 0-.5-.1-.7-.3l-.9-.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l.9.9c.4.4.4 1 0 1.4a1.08 1.08 0 0 1-.7.3z'/%3E%3Cpath d='M17.461 22.613c-.4 0-.8-.3-.9-.7-.2-.5.1-1.1.6-1.3.8-.3 1.6-.8 2.2-1.4.8-.8 1-2 .5-2.5-.3-.3-.9-.4-1.4-.2-.3.1-.6.2-.9.4-.6.3-1.5.8-2.8 1.1-1.1.3-2.3 0-3.2-.8-.6-.6-.9-1.4-.9-2.3 0-1.1.5-2.2 1.4-3.1.8-.8 1.8-1.5 2.9-1.8.5-.2 1.1.1 1.3.6s-.1 1.1-.6 1.3c-.8.3-1.6.8-2.2 1.4-.5.5-.8 1.1-.8 1.7 0 .2.1.6.3.8.3.3.8.4 1.3.3 1.1-.3 1.8-.6 2.4-.9.4-.2.8-.4 1.2-.5 1.1-.4 2.4-.2 3.4.7 1.4 1.4 1.2 3.8-.4 5.4-.8.8-1.8 1.5-2.9 1.8h-.5zm.273 7.377h0c-.6 0-1.1-.2-1.5-.6l-11.4-11.4c-.4-.4-.6-1-.6-1.6l.2-9.9c0-1.1.9-2 2.1-2.1l9.9-.2c.6 0 1.1.2 1.6.6l11.3 11.4c.8.8.8 2.2 0 3l-10.1 10.2c-.4.4-.9.6-1.5.6zm-1.2-23.8l-9.9.3c-.1 0-.2 0-.2.1l-.3 9.9 11.4 11.5h.1.1l10.2-10.2v-.2l-11.4-11.4z'/%3E%3Cpath d='M8.461 9.513c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4.3-.3.4-.9.3-1.6-.2-.9-.8-1.8-1.6-2.6-.9-1-2.2-1.6-3.2-1.6a1.69 1.69 0 0 0-1 .3c-.5.6-.3 2.1.7 3.4.3.4.2 1.1-.3 1.4-.4.3-1 .2-1.4-.2-1.6-2.2-1.7-4.6-.4-6 .6-.6 1.5-.9 2.4-.9 1.5 0 3.3.8 4.6 2.2 1 1 1.8 2.3 2.1 3.5.3 1.4 0 2.6-.8 3.5-.2.2-.4.3-.7.3z'/%3E%3C/svg%3E");
+                }
+ 
+                &.facebook {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M24.4 0H5.6A5.59 5.59 0 0 0 0 5.6v18.8A5.59 5.59 0 0 0 5.6 30h18.8a5.59 5.59 0 0 0 5.6-5.6V5.6A5.59 5.59 0 0 0 24.4 0zm-.8 16.2h-2.8v10.4h-4.7V16.2h-1.8v-3.5h1.8v-2.2c0-2.9 1.2-4.7 4.7-4.7h3.5v3.5h-2c-1.3 0-1.4.5-1.4 1.4v2H24l-.4 3.5z'/%3E%3C/svg%3E");
+                }
+    
+                &.twitter {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M30 5.8c-1.2.5-2.3.8-3.5.9 1.3-.8 2.2-2 2.7-3.4-1.2.7-2.6 1.2-3.9 1.6-2.3-2.5-6.2-2.6-8.6-.2-1.6 1.5-2.2 3.7-1.8 5.8-5-.4-9.6-2.7-12.7-6.4-1.6 2.8-.8 6.3 1.9 8.2-.9 0-2-.2-2.8-.8h0c0 2.9 2.1 5.5 4.9 6-.6.1-1.1.2-1.6.2-.4 0-.8 0-1.2-.1.8 2.5 3.2 4.2 5.7 4.2-2.2 1.7-4.9 2.7-7.6 2.6-.5 0-.9 0-1.5-.1 2.8 1.8 6.1 2.8 9.3 2.8 9.6.1 17.4-7.6 17.4-17.2v-.2-.8C28.1 8 29.2 7 30 5.8'/%3E%3C/svg%3E");
+                }
+    
+                &.instagram {
+                   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M8.7 0A8.71 8.71 0 0 0 0 8.7v12.6A8.71 8.71 0 0 0 8.7 30h12.6a8.71 8.71 0 0 0 8.7-8.7V8.7A8.71 8.71 0 0 0 21.3 0H8.7zm0 2.3h12.6a6.38 6.38 0 0 1 6.4 6.4v12.6a6.38 6.38 0 0 1-6.4 6.4H8.7a6.38 6.38 0 0 1-6.4-6.4V8.7a6.38 6.38 0 0 1 6.4-6.4zm15 2.3c-1 0-1.7.8-1.7 1.7S22.8 8 23.7 8c1 0 1.7-.8 1.7-1.7s-.8-1.7-1.7-1.7zM15 6.9c-4.5 0-8.1 3.6-8.1 8.1s3.6 8.1 8.1 8.1 8.1-3.6 8.1-8.1-3.6-8.1-8.1-8.1zm0 2.3c3.2 0 5.8 2.6 5.8 5.8s-2.6 5.8-5.8 5.8-5.8-2.6-5.8-5.8 2.6-5.8 5.8-5.8z'/%3E%3C/svg%3E");
+                }               
+ 
+                a {
+                   text-decoration: underline;
+                }
+             }
+          }
+ 
+          // 4.1 Google Maps iframe cover.
+ 
+          #mymap {
+             background-image: url(../images/png/map-bg.png);
+             background-color: #f9f9f9;
+             background-size: cover;
+             background-position: center center;
+             position: relative;
+             overflow: hidden;
+             height: 400px;
+          }
+ 
+          #mymap iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+          }
+       }
+ 
+       @include tablet {
+ 
+          .content {
+ 
+             .accolades {
+                margin: 0 0 4rem 0;
+             }
+          }
+ 
+          .profile-meta {
+             padding-bottom: 0;
+ 
+             h3 {
+                padding: 0 0 2rem 0;
+             }
+ 
+             .key-info-list {
+                padding: 1rem 0 2.5rem 0;
+             }
+          }
+       }
+ 
+       @include mobile {
+ 
+          .content {
+ 
+             .accolades {
+                margin: 0 0 3rem 0;
+                padding: 2rem;
+ 
+                p {
+                   font-size: 1.6rem;
+                   background-size: 40px 60px;
+                   height: 6rem;
+                   line-height: 2.6rem;
+                   padding: 0 0 0 6rem;
+                }
+             }
+ 
+          }
+ 
+          .profile-meta {
+ 
+             h3 {
+                padding: 0 0 1.5rem 0;
+             }
+          
+             .key-info-list {
+                column-count: 1;
+                padding: 1rem 0 2rem 0;
+ 
+                li {
+                   background-size: 25px 25px;
+                   background-position-y: 1rem;
+                   height: auto;
+                   padding: 1rem 0 0 4rem;
+                   margin: 0 0 1rem 0;
+                }
+             }
+          }
+       }
+    }
+ }
+ 
+ // 5. Places Nearby bottom carousel
+ 
+ .row-background.content-carousel {
+ 
+    @include bg-pattern;
+    color: #FFF;
+ 
+    .title {
+       margin: 0 0 3rem 0;
+       padding: 0 0 2rem 0;
+ 
+       @include heading-2-underline;
+ 
+    }
+ 
+    #places-near-by, #previous-winners {
+ 
+       a {
+          color: #FFF;
+          text-decoration: none;
+ 
+          h2 {
+             font-size: 2.5rem;
+             padding: 1.5rem 0 0.5rem 0;
+          }
+ 
+          p {
+             font-size: 1.8rem;
+             padding: 0 0 0 0;
+             margin: 0 0 0 0;
+          }
+       }      
+       
+    }
+ 
+    @include tablet {
+ 
+       .row {
+          padding-right: 0;
+       }      
+ 
+       #places-near-by a, #previous-winners a {
+ 
+          h2 {
+             font-size: 2rem;
+             padding: 1rem 0 0 0;
+          }
+ 
+          p {
+             font-size: 1.5rem;
+          }
+       }
+    }   
+ 
+    @include mobile {
+       .row {
+          padding-right: 0;
+       }
+ 
+       #places-near-by a, #previous-winners a {
+ 
+          img {
+             height: auto;
+             min-height: 15.7rem;
+          }
+    
+          p {
+             font-size: 1.6rem;
+          }
+       }
+    }
+ 
+ }

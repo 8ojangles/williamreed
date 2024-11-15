@@ -1,0 +1,71 @@
+// Branding colours
+
+$color-brand: rgba(26,26,26,1); // Primary
+$color-brand-secondary: rgba(99,35,41,1); // Secondary Rouge
+$color-brand-tertiary: rgba(195,158,109,1); // Tertiary Gold
+
+$color-bg-section: rgba(30,30,30,1); //Header block
+
+$color-link: rgba(171,127,70,1);
+$color-link-hover: rgba(109,81,45,1);
+
+$color-button: rgba(195,158,109,1);
+$color-button-text: rgba(0,0,0,1);
+$color-button-hover: rgba(171,127,70,1);
+
+$color-button-alt: rgba(255,255,255,1);
+$color-button-alt-text: rgba(0,0,0,1);
+$color-button-alt-hover: rgba(255,255,255,1); 
+
+
+// Branding header
+
+.branding {
+ 
+    > a {
+       height: 8rem;
+    }
+}
+
+// Navigation logo sizing
+
+header.header {
+    .row {
+       > a {
+          height: 5rem;
+       }
+    }
+
+    @include mobile {
+        .row {
+           > a {
+              height: 3.5rem;
+    
+              .nav-logo {
+                 width: 24.8rem;
+                 height: 3.5rem;
+              }
+           }
+        }
+    }
+}
+
+// Half background patterns
+
+@mixin bg-pattern {
+    background-color: $color-brand-secondary;
+    background-image: url(../images/png/bg-pattern.png);
+    background-attachment:  fixed;
+}
+
+// Leaderboard hotel stylings
+
+.top-leaderboard {
+    @include bg-pattern;
+}
+
+//Patterns
+
+.bg-pattern {
+    @include bg-pattern;
+}

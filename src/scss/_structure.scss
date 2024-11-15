@@ -1,0 +1,636 @@
+/*
+	********************************************
+
+        Base Structure
+
+	********************************************
+    	
+        1.   Base row stylings
+        1.1  Half background style
+        1.2  Base content styling
+        1.3  Base content styling for tablet
+        1.4  Base content styling for mobile
+        2.   List styles for Stories, Homepage Stories and Our Sponsors pages
+        2.2  List stylings for desktop
+        2.3  List stylings for tablet
+        2.4  List stylings for mobile
+        3.   Top and bottom navigation for the Story Article and Sponsor Profile page
+        3.1  Top and bottom navigation for tablet
+        3.2  Top and bottom navigation for mobile
+        4.   Leadboard styles 
+
+	********************************************
+*/
+
+// 1. Base row stylings 
+
+.row-background {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    // 1.1 Half background style
+
+    .half-background {
+        position: absolute;
+        height: 190px;
+        width: 100%;
+        z-index: -1;
+
+        @include mobile {
+            height: 130px;
+        }
+    }
+    
+    .row {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 144rem;
+        padding: 6rem 2.5rem;
+
+      //Makes video iframe responsive
+        .content .iframe {
+            padding-top: 56.25%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            width: 100%;
+
+            iframe {
+                border: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        // 1.2  Base content styling
+
+        .content {
+
+            h2:first-of-type { 
+                margin: 0 0 3rem 0;
+    
+                @include heading-1-underline; 
+            }
+
+            h2:not(:first-of-type) {
+                font-size: 2.5rem;
+                line-height: normal;
+                margin: 0 0 0 0;
+                padding: 0 0 3rem 0;
+            }
+
+            p {
+                padding: 0 0 3.5rem 0;
+            }
+
+            img {
+                height: auto;
+                max-width: 100%;
+                padding: 0 0 3.5rem 0;
+            }
+
+            &.remove-bp {
+
+                p:last-of-type {
+                    padding: 0 0 0 0;
+                }
+            }
+
+            .video {
+                min-height: 450px;
+                max-height: 600px;
+                margin: 0 0 3.5rem 0;
+                width: 100%;
+            }
+        }
+
+        // 1.3  Base content styling tablet
+
+        @include tablet {
+            padding: 4rem 2rem;
+            width: 100%;
+
+            .content {
+
+                h2:first-of-type { 
+                    padding: 0 0 2.5rem 0;
+                    margin: 0 0 2.5rem 0;
+                }
+     
+                h2:not(:first-of-type) {
+                font-size: 2.2rem;
+                line-height: 3rem;
+                }
+    
+                p {
+                    padding: 0 0 3.5rem 0;
+                }
+
+                .video {
+                    min-height: 100%;
+                    max-height: 100%;
+                }
+            }
+        }
+
+        // 1.4  Base content styling mobile
+
+        @include mobile {
+            padding: 3rem 2rem;
+            width: 100%;
+
+            .content {
+
+                h2:first-of-type { 
+                    padding: 0 0 2rem 0;
+                    margin: 0 0 2rem 0;
+                }
+    
+                h2:not(:first-of-type) {
+                    font-size: 2rem;
+                    line-height: 3rem;
+                    padding: 0 0 1rem 0;
+                }
+    
+                p {
+                    padding: 0 0 2.5rem 0;
+                }
+
+                img {
+                    padding: 0 0 3rem 0;
+                }
+
+                .video {
+                    min-height: 100%;
+                    max-height: 100%;
+                    margin: 0 0 3rem 0;
+                }
+            }
+        }
+    }
+
+    &.content-carousel {
+
+        .row {
+            padding: 6rem 2.5rem;
+
+            .splide__slide img {
+                width: 100%;
+            }
+
+            .splide__arrow {
+                background: $color-brand-tertiary;
+                height: 2.5em;
+                opacity: 1;
+                top: 38%;
+                width: 2.5em;
+            }
+
+            .splide__arrow--next {
+                right: -1em;
+            }
+
+            .splide__arrow--prev {
+                left: -1em;
+            }
+
+            @include tablet {
+                padding: 4rem 2.5rem 4rem 2.5rem;
+            }
+
+            @include mobile {
+                padding: 3rem 2rem 3.5rem 2rem;
+
+                .splide__arrow {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+// 2. List item styles. Used in Stories, Homepage Stories and Our Sponsors.
+
+.row-background.flex-item-list {
+
+    // 2.2 Base list item style
+    
+    .row {
+        margin: 0 auto;
+        width: 100%;
+
+        &.title {
+            padding: 6rem 2.5rem 0 2.5rem;
+        }
+
+        .title-header {
+            padding-bottom: 0;
+
+            h1 {
+                color: #FFF;
+                font-weight: 600;
+                padding: 0 0 3rem 0;
+                text-align: center;
+
+                @include center-heading-1-underline;
+            }
+        }
+
+        .item-list {
+            display: grid;
+
+            .item {
+                box-sizing: border-box;
+                color: #000;
+                text-decoration: none;
+                transition: all 0.5s ease-out;
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+                width: 100%;
+
+                &:hover {
+                    transform: translate(0px, -1rem);
+                }
+
+                img {
+                    height: auto;
+                    max-width: 100%;
+                    padding-bottom: 1rem;
+                    min-height: 18rem;
+                    width: 100%;
+                }
+
+                h2 {
+                    margin: 0 0;
+                    position: relative;
+
+                    @include heading-2-underline;
+                }
+            }
+        }
+
+        // 2.3 List stylings for desktop 
+
+        @include desktop {
+
+            .load {
+                padding-top: 6rem;
+    
+                a {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .item-list {
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 4rem;
+                grid-row-gap: 4.5rem;
+                
+    
+                .item {
+                    width: 100%;
+    
+    
+                    h2 {
+                        font-size: 2.5rem;
+                        line-height: 3.5rem;
+                        padding: 0 2rem 1.5rem 0;
+                    }
+    
+                    p {
+                        margin: 0 0;
+                        padding: 1.5rem 2.5rem 0 0;
+                    }
+                }
+            }
+        }
+
+        // 2.4 List stylings for tablet
+
+        @include tablet {
+            
+            &.title {
+                padding: 4rem 2.5rem 0 2.5rem;
+            }
+
+            .load {
+                padding-top: 4rem;
+    
+                a {
+                    background-position-x: 11rem;
+                    font-size: 1.6rem;
+                }
+            }
+
+            .item-list {
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 3rem;
+                grid-row-gap: 3.5rem;
+            
+                .item {
+
+                    h2 {
+                        font-size: 2rem;
+                        line-height: 3rem;
+                        padding: 0 2rem 1.5rem 0;
+                    }
+
+                    p {
+                        padding: 1.5rem 2rem 0 0;
+                    }
+
+                    &:hover {
+                        transform: translate(0px, 0);
+                    }
+                }
+            }
+        }
+
+        // 2.5 List stylings for mobile
+
+        @include mobile {
+
+            &.title {
+                padding: 3rem 2rem 0 2rem;
+            }
+
+            .load {
+                padding-top: 3rem;
+    
+                a {
+                    background-position-x: 10rem;
+                    font-size: 1.5rem;
+                }
+            }
+
+            .item-list {
+                grid-template-columns: 1fr;
+                grid-column-gap: 0;
+                grid-row-gap: 3rem;
+                min-height: 60rem;
+            
+                .item {
+                    
+                    img {
+                        padding-bottom: 1rem;
+                    }
+
+                    h2 {
+                        font-size: 2rem;
+                        margin: 0 0;
+                        padding: 0 0 1.5rem 0;
+                    }
+
+                    p {
+                        padding: 1.2rem 0 0 0;
+                        max-width: 95%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 3. Top and bottom navigation for the Story Article and Sponsor Profile page
+
+.row-background .row {
+
+    .page-nav {
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       list-style-type: none;
+       padding: 0 0 6rem 0;
+       position: relative;
+ 
+        li {
+            margin: 0 0 0 0;
+        }
+    
+        a {
+            font-size: 2.5rem;
+            font-family: "Sentinel A", "Sentinel B", serif;
+            font-weight: 600;
+            color: #FFF;
+        }
+    
+        .back-to-button a {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='18.107' viewBox='0 0 30 18.107'%3E%3Cpath id='left-arrow-icon' d='M15.953,22.761l8.072-8.072a.982.982,0,1,1,1.388,1.388l-6.4,6.4H44.683a.982.982,0,0,1,0,1.963H19.017l6.4,6.4a.982.982,0,0,1-1.388,1.389L15.953,24.15A.982.982,0,0,1,15.953,22.761Z' transform='translate(-15.665 -14.402)' fill='%23ab7f46'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center left;
+            background-size: 30px;
+            display: inline-block;
+            font-weight: 600;
+            padding: 0 0 0 5rem;
+            text-decoration: none;
+        }
+    
+        &.bottom {
+            padding: 2.5rem 0 0 0;
+    
+            a {
+                color: $color-brand;
+
+                &:hover {
+                    color: $color-black-60;
+                    text-decoration: underline;
+                }
+            }
+        }
+    
+        // 3.1 Top and bottom navigation for tablet
+
+        @include tablet {
+            padding: 0 0 4rem 0;
+            
+            a {
+                font-size: 2rem;
+            }
+    
+            .back-to-button {
+                left: 0;
+                position: revert;
+            }
+    
+            &.bottom {
+                padding: 1rem 0 0 0;
+            }
+        }
+    
+        // 3.2 Top and bottom navigation for mobile
+
+        @include mobile {
+            padding: 0 0 3rem 0;
+    
+            a {
+                font-size: 1.8rem;
+            }
+    
+            .previous-page a {
+                background-size: 30px;
+                padding: 0 0 0 4rem;
+            }
+    
+            .next-page a {
+                background-size: 30px;
+                padding: 0 4rem 0 0;
+            }
+    
+            &.bottom {
+                padding: 0 0 0 0;
+            }
+        }
+    }
+}
+
+//4. Leaderboard styling
+
+.top-leaderboard { 
+
+    background: #F5F5F5;
+    border-top: 1px solid #EAEAEA;
+
+    > div {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        min-height: 13rem;
+        padding: 2rem 0 2rem 0;
+
+        @include mobile { 
+            min-height: 90px;
+        } 
+    }    
+}
+
+.middle-leaderboard {
+    background: #F5F5F5;
+
+    > div { 
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0 2rem 0;
+    }
+}
+
+.bottom-leaderboard {
+    background: #F5F5F5;
+
+    > div { 
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0 2rem 0;
+    }
+}
+
+
+// 404 page styling
+.error-block {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    padding: 4.4rem 2rem;
+    max-width: 144rem;
+    width: 100%;
+
+    #errorPageContent {
+        padding: 0 4rem 0 0;
+        width: 50%;
+        
+        h2 {
+            font-size: 12rem;
+            line-height: normal;
+            padding: 0 0 0 0;
+            margin-bottom: -1.5rem;
+        }
+
+        h3 {
+            font-size: 4.6rem;
+            padding: 0;
+            line-height: normal;
+            margin-bottom: 3rem;
+        }
+
+        p {
+            padding: 0 0 1.6rem 0;
+
+            &:last-of-type {
+                padding: 0 0 0 0;
+            }
+        }
+
+        .homepageCountdown {
+            font-weight: 700;
+        }
+    }
+
+    .error-image {
+        height: auto;
+        max-width: 50%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 960px) {
+    .error-block {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 2rem;
+
+        #errorPageContent {
+            padding: 0 0 2.4rem 0;
+            width: 100%;
+            
+            h2 {
+                font-size: 9.6rem;
+                line-height: normal;
+                margin-bottom: -.1rem;
+            }
+
+            h3 {
+                font-size: 3.2rem;
+                margin-bottom: 2.3rem;
+            }
+
+            p {
+                padding: 0 0 1.2rem 0;
+            }
+        }
+
+        .error-image {
+            height: auto;
+            max-width: 60rem;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .error-block {
+        padding: 1.2rem 2rem;
+
+        #errorPageContent {
+            
+            h2 {
+                font-size: 6.4rem;
+                margin-bottom: 0;
+            }
+
+            h3 {
+                font-size: 2.4rem;
+                margin-bottom: 1.8rem;
+            }
+
+            p {
+                padding: 0 0 1rem 0;
+            }
+        }
+    }
+}

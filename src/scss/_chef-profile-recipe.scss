@@ -1,0 +1,239 @@
+/*
+	********************************************
+
+        Chef Profile and Recipe Structure
+
+	********************************************
+    	
+        1.   Chef profile/recipe for desktop
+
+	********************************************
+*/
+
+// 1. Chef profile/recipe page
+
+.row-background.story-content {
+
+    .row {
+ 
+       .content {
+ 
+          // Sets list font size, padding and margins across all for desktop
+ 
+          > div {
+ 
+             h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                line-height: normal;
+                margin: 0 0 2rem 0;
+                position: relative;
+                padding: 0 0 2rem 0;
+ 
+                @include heading-2-underline;
+             }
+          
+             ul {
+ 
+                li {
+                   font-size: 1.6rem;
+                   line-height: 2.6rem;
+                   margin: 0 0 1rem 0;
+                }
+ 
+                li:last-of-type {
+                   margin: 0 0 0 0;
+                   padding: 0 0 0 0;
+                }
+             }
+          }
+ 
+          // Individual list styles
+ 
+          .ingredients {
+             box-sizing: border-box;
+             border: 1px #c39e6d solid;
+             float: right;
+             margin: 0 0 2rem 3rem;
+             padding: 2rem;
+             width: 30%;
+ 
+             h2 {
+                font-size: 2.5rem;
+                margin: 0 0 2rem 0;
+                padding: 0 0 2rem 0;
+ 
+                @include heading-2-underline;
+             }
+ 
+             ul {
+                list-style-type: none;
+                padding: 0 0 3rem 0;
+ 
+                &:last-of-type {
+                   padding: 0 0 0 0;
+                }
+             }
+ 
+             // sets p tags to same styling as list items
+             p {
+                font-size: 1.6rem;
+                line-height: 2.6rem;
+                margin: 0 0 1rem 0;
+                padding: 0 0 0 0;
+             }
+ 
+             p:last-of-type {
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+             }
+          }
+ 
+          .chef-profile-meta {
+             box-sizing: border-box;
+             display: flex;
+             margin-bottom: 3rem;
+ 
+             .key-dishes {
+                border: 1px #c39e6d solid;
+             }
+ 
+             .key-facts {
+                border: 1px #c39e6d solid;
+                border-right: none;
+             }
+ 
+             .key-dishes, .key-facts {
+                box-sizing: border-box;
+                padding: 2rem;
+                width: 50%;
+ 
+                h2 {
+                   font-size: 2.5rem;
+                   margin: 0 0 2rem 0;
+                   padding: 0 0 2rem 0;
+    
+                   @include heading-2-underline;
+                }
+ 
+                ul { 
+                   padding-bottom: 0; 
+                   padding-left: 1rem;
+ 
+                   li {
+                      padding-left: 1rem;
+                   }
+ 
+                   li::marker {
+                      content: "+";
+                      font-size: 1.6rem;
+                   }
+                }
+             }
+          }
+ 
+          @include tablet { 
+ 
+             // Sets list font size, padding and margins across all for tablet
+ 
+             > div {
+ 
+                h2 {
+                   font-size: 2.2rem;
+                   line-height: 3rem;
+                }
+ 
+                ul {
+                   padding-bottom: 2rem;
+ 
+                   li {
+                      font-size: 1.5rem;
+                      line-height: 2.5rem;
+                   }
+                }
+             } 
+ 
+             .key-dishes, .key-facts {
+ 
+                h2 {
+                   font-size: 2.2rem;
+                   line-height: 3rem;
+                }
+             }
+ 
+             .ingredients {
+ 
+                h2 {
+                   font-size: 2.2rem;
+                   line-height: 3rem;
+                }
+ 
+                // sets p tags to same styling as list items
+                p {
+                   font-size: 1.5rem;
+                   line-height: 2.5rem;
+                }
+             }
+          }
+ 
+          @include mobile { 
+ 
+             // Sets list font size, padding and margins across all for mobile
+ 
+             > div {
+ 
+                h2 {
+                   font-size: 2rem;
+                }
+ 
+                ul li {
+ 
+                   &.sub-title {
+                      font-size: 1.6rem;
+                      line-height: 2.6rem;
+                   }
+                }
+             }
+ 
+             .ingredients {
+                float: none;
+                margin: 0 0 2rem 0;
+                width: 100%;
+ 
+                h2 {
+                   font-size: 2rem;
+                   line-height: 3rem;
+                   margin: 0 0 1.5rem 0;
+                   padding: 0 0 1.5rem 0;
+                }
+                
+                // sets p tags to same styling as list items
+                p {
+ 
+                   &.sub-title {
+                      font-size: 1.6rem;
+                      line-height: 2.6rem;
+                   }
+                }
+             }
+ 
+             .chef-profile-meta {
+                flex-direction: column;
+    
+                .key-dishes, .key-facts {
+                   border: 1px #c39e6d solid;
+                   margin-left: 0;
+                   width: 100%;
+ 
+                   h2 {
+                      font-size: 2rem;
+                      line-height: 3rem;
+                      margin: 0 0 1.5rem 0;
+                      padding: 0 0 1.5rem 0;
+                   }
+                }
+             }
+          }
+       }
+    }
+ }

@@ -1,0 +1,338 @@
+/*
+	********************************************
+
+        Story Article Structure
+
+	********************************************
+    	
+        1.   Story article header
+        1.1  Story article desktop styles
+        1.2  Story article tablet styles
+        1.3  Story article tablet styles
+        2    Story header image 
+        2.1  Story header image for tablet 
+        2.2  Story header image for mobile
+        3    Story article row width
+        3    Cookie Statement
+
+	********************************************
+*/
+
+// 1. Story article header
+
+.row-background.story {
+
+    .row {
+       width: 85rem;
+ 
+       .story-header {
+          box-sizing: border-box;
+          color: #FFF;
+          display: flex;
+          flex-direction: column;
+          margin: 0 auto;
+          position: relative;
+          width: 100%;
+ 
+          .story-intro {
+             max-width: 83rem;
+ 
+             h1 {
+                font-weight: 600;
+                padding: 0 0 3rem 0;
+ 
+                @include heading-1-underline;
+             }
+ 
+             h2 {
+                font-family:"Gotham SSm A", "Gotham SSm B", sans-serif;
+                color: #FFF;
+                font-weight: normal;
+             }
+ 
+             p {
+                padding: 0 0 0 0;
+ 
+                &.chef {
+ 
+                   a {
+                      color: $color-brand-tertiary;
+                      text-decoration: underline;
+       
+                      &:hover {
+                         color: $color-link;
+                      }
+                   }
+                }
+             }
+          
+ 
+             // Recipe meta info and icons 
+ 
+             .recipe-meta {
+                display: flex;
+ 
+                p {
+                   background-size: 2rem 2rem;
+                   background-repeat: no-repeat;
+                   background-position-y: 0.5rem;
+                   line-height: 3rem;
+                   margin: 0 2rem 3rem 0;
+                   padding: 0 0 0 3rem;
+ 
+                   &.time {
+                      background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 20 20' style='enable-background:new 0 0 20 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23FFFFFF;} %3C/style%3E%3Cg%3E%3Cpath class='st0' d='M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z M10,18c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8 S14.4,18,10,18z M10.5,5H9.1v6l5.3,3.1l0.7-1.2l-4.5-2.7V5z'/%3E%3C/g%3E%3C/svg%3E");
+                   }
+ 
+                   &.serves {
+                      background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 18 20' style='enable-background:new 0 0 18 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23FFFFFF;} %3C/style%3E%3Cpath class='st0' d='M13,4v8h3v8h2V0C15.3,0,13,2.3,13,4z M8,7H6V0H4v7H2V0H0v7c0,2.2,1.8,4,4,4v9h2v-9c2.2,0,4-1.8,4-4V0H8V7z'/%3E%3C/svg%3E");
+                   }
+ 
+                   &.serves.cocktail {
+                      background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='utf-8'?%3E%3C!-- Generator: Adobe Illustrator 26.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 30 30' style='enable-background:new 0 0 30 30;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0{fill:%23FFFFFF;} %3C/style%3E%3Cpath class='st0' d='M19.617,10L15,15.183L10.383,10H19.617 M30,0H0v3.333l13.333,15v8.333H5V30h20v-3.333h-8.333v-8.333L30,3.333V0 z M7.383,6.667l-2.95-3.333h21.15l-2.967,3.333H7.383z'/%3E%3C/svg%3E");
+                   }
+                }
+             }
+          }
+       }
+ 
+       // 1.1 Story article desktop styles
+ 
+       @include desktop {
+          .story-header {
+ 
+             .story-intro {
+    
+                h2 {
+                   font-size: 2.5rem;
+                   padding: 3rem 0 3rem 0;
+ 
+                   &.editorial {
+                      font-size: 2rem;
+                      padding: 3rem 0 0 0;
+                   }
+                }
+ 
+                p {
+ 
+                   &.chef { 
+                      padding: 3rem 0 0 0;
+                   }
+                }
+             }
+          }
+       }
+ 
+       // 1.2 Story article tablet styles
+ 
+       @include tablet {
+ 
+          .story-header {
+ 
+             .story-intro {
+ 
+                h1 {
+                   padding: 0 0 2.5rem 0;
+                }
+ 
+                h2 {
+                   font-size: 2rem;
+                   line-height: 3rem;
+                   padding: 2.5rem 0 2.5rem 0;
+ 
+                   &.editorial {
+                      font-size: 1.8rem;
+                      padding: 2.5rem 0 0 0;
+                   }
+                }
+ 
+                p { 
+                   &.chef {
+                      padding: 2.5rem 0 0 0;
+                   }
+                }
+             }
+          }
+       }
+ 
+       // 1.3 Story article mobile styles
+ 
+       @include mobile {
+ 
+          .story-header {
+ 
+             .story-intro {
+ 
+                h1 {
+                   padding: 0 0 2rem 0;
+                }
+ 
+                h2 {
+                   font-size: 1.8rem;
+                   line-height: 3rem;
+                   padding: 2rem 0 2rem 0;
+ 
+                   
+                   &.editorial {
+                      font-size: 1.6rem;
+                      padding: 2rem 0 0 0;
+                   }
+                }
+ 
+                p {
+                   
+                   &.chef {
+                      padding: 2rem 0 0 0;
+                   }
+                }
+ 
+                .recipe-meta {
+                   display: flex;
+       
+                   p {
+                      background-size: 2rem 2rem;
+                      background-position-y: 0;
+                      line-height: 2rem;
+                      margin: 0 2rem 2rem 0;
+                      padding: 0 0 0 3rem;
+                   }
+                }
+             }
+          }
+       }
+    }
+ }
+ 
+ // 2. Story header image 
+ 
+ .row-background.story-header-image {
+    background-position: -50%;   
+    background-color: $color-bg-section;
+    @include bg-pattern;
+ 
+    .row {
+       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAH0CAYAAAD8PUeXAAAABHNCSVQICAgIfAhkiAAAACdJREFUSEtj+A8EDKPEaBiMpoPRbDBaFIyWhKMl4WhJOFoSDqWSEAC+M8iaStPlcQAAAABJRU5ErkJggg==');
+       background-position: left calc(100% + 205px);
+       background-repeat: repeat-x;
+       display: flex;
+       justify-content: center;
+       width: 100%;
+       max-width: 100%;
+       padding: 0 2.5rem;
+       position: relative;
+ 
+       img {
+          height: auto;
+          width: 100%;
+          max-width: 95.4rem;
+       }
+ 
+       // 2.1 Story header image for tablet 
+ 
+       @include tablet {
+          background-position: left calc(100% + 305px);
+       }
+ 
+       // 2.2 Story header image for mobile
+ 
+       @include mobile {
+          background-position: left calc(100% + 405px);
+          padding: 0 2rem;
+ 
+          img {
+             min-height: 18.9rem;
+          }
+       }
+    }
+ }
+ 
+ 
+ // 3. Story article row width and content styligns
+ 
+ .row-background.story-content {
+ 
+    .row {
+       width: 85rem;
+ 
+       .content {
+ 
+          h2:first-of-type { 
+             margin: 0 0 3rem 0;
+ 
+             @include heading-1-underline; 
+          }
+ 
+          h2:not(:first-of-type) {
+             font-size: 2.5rem;
+             line-height: normal;
+             margin: 0 0 0 0;
+             padding: 0 0 3rem 0;
+          }
+ 
+          a { color: $color-link; 
+             
+             &:hover {
+                color: $color-link-hover;
+             }
+          } 
+          
+          // 3.1 Story article row width and content stylings for tablet
+          
+          @include tablet { 
+ 
+             h2:first-of-type { 
+                padding: 0 0 2.5rem 0;
+                margin: 0 0 2.5rem 0;
+             }
+ 
+             h2:not(:first-of-type) {
+                font-size: 2.2rem;
+                line-height: 3rem;
+             }
+          }
+ 
+          // 3.2 Story article row width and content stylings for mobile
+ 
+          @include mobile { 
+ 
+             h2:first-of-type { 
+                padding: 0 0 2rem 0;
+                margin: 0 0 2rem 0;
+             }
+ 
+             h2:not(:first-of-type) {
+                font-size: 2rem;
+                line-height: 3rem;
+                padding: 0 0 1rem 0;
+             }
+          }
+       }
+    } 
+ }
+ 
+ /* Cookie Statement page */
+ 
+ #cmp {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 144rem;
+    padding: 6rem 2.5rem;
+    max-width: 85rem;
+    width: 100%;
+ 
+    .cookie-date {
+       font-size: 1.8rem;
+       line-height: 3rem;
+       padding: 0;
+       margin-top: 15px;
+    }
+ 
+    @include tablet { 
+       padding: 4.8rem 2rem;
+ 
+       .cookie-date {
+          margin-top: 7px;
+       }   
+    }
+ }
+ 
