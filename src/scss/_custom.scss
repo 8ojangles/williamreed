@@ -1,0 +1,25 @@
+@import './card-intro-animation';
+@import './sort-list';
+@import './loader-custom';
+@import './skeleton-card';
+
+.header .menu > .menu-item > a .expand {
+    svg {
+        margin-left: 0;
+    }
+}
+
+.row-background.the-list .row .list a div {
+    width: 100%;
+}
+
+.row-background.the-list .row .list a div div {
+    width: 100%;
+}
+
+.row-background.the-list .row .list a img {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+    animation-composition: add;
+}

@@ -1,22 +1,44 @@
-// Not simple in anyway - SORT YOUR DATA OUT
-// Proper address formatters are incredibly complicated
-// and beyond the scope of this.
-// some examples of raw addresses from the data:
+// There is a limit to how much you can process an
+// address string without a proper address parser.
+// Some examples of raw addresses from the data:
 // "Skelton Penrith Cumbria CA11 9SE" - spaces
 // "King St, Fordwich, Canterbury CT2 0DB" - commas
 // "North York Moors National Park Oldstead Yorkshire YO61 4BL"
-// - where do you even start with that one?
-// I'm not afraid to admit this is an absolute bodge job
-function simpleAddressFormatter(addressStr) {
-    const splitAddr = addressStr.split(' ');
-    const pcRemoved = splitAddr.slice(0, -2).join(' ').split(', ');
-    const arrLen = pcRemoved.length;
+// "Gurnards Head St. Ives Cornwall TR26 3DE"
+// I have accommodated "St. Ives" with a simple check but
+// given the addresses are formatted with either spaces or
+// commas (or both!) it is difficult to handle
+// all potential cases.
+// At this point, I would recommend either serving the
+// address formatted from the API ("<city>, <county>")
+// or an address object with separate fields for each part
+// to allow for processing in the front-end
+// e.g. { houseNumber: "24", street: "King St", city: "Fordwich", county: "Canterbury", postcode: "CT2 0DB" }
 
-    if (arrLen === 1 && !pcRemoved[0].includes(',')) {
-        return pcRemoved[0].split(' ').slice(0, -2).join(', ');
+const postcodeRegex = /[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i;
+const trailingSpaceOrCommaRegex = /[,\s]*$/;
+
+function simpleAddressFormatter(addressStr) {
+    if (!addressStr) {
+        return '';
     }
 
-    return `${pcRemoved[arrLen - 2]}, ${pcRemoved[arrLen - 1].replace(',', '')}`.replace(',,', ',');
+    const addressNoPostcode = addressStr.replace(postcodeRegex, '').trim();
+    const trimmed = addressNoPostcode.replace(trailingSpaceOrCommaRegex, "");
+    let splitAddr;
+    if (trimmed.includes(',')) {
+        splitAddr = trimmed.split(', ');
+    } else {
+        splitAddr = trimmed.split(' ');
+    }
+    const len = splitAddr.length;
+    const stPrefixIndex = splitAddr.indexOf('St.');
+    if (stPrefixIndex !== -1) {
+        splitAddr[stPrefixIndex + 1] = `${splitAddr[stPrefixIndex]} ${splitAddr[stPrefixIndex + 1]}`;
+    }
+    
+    
+    return `${splitAddr[len - 2]}, ${splitAddr[len - 1]}`;
 }
 
 

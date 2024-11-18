@@ -19,14 +19,12 @@ const LazyImage = ({ imgUrl, imgAlt, scrollPosition }) => {
     }
 
     return (
-        <div>
+        <>
             {imgLoadError === false ? (
                <LazyLoadImage
-                    threshold={250}
+                    threshold={150}
                     effect="opacity"
                     alt={`Image of exception food from ${imgAlt}`}
-                    width={436}
-                    height={245}
                     src={`${baseUri}${imgUrl}`} // use normal <img> attributes as props
                     placeholderSrc={imgLoading}
                     scrollPosition={scrollPosition}
@@ -37,7 +35,7 @@ const LazyImage = ({ imgUrl, imgAlt, scrollPosition }) => {
             ) : (
                 <img width={64} height={64} src={imgNotFound} alt={`There was supposed to be an mage of exception food from ${imgAlt}, but it didnt load unfortunately, so we are showing you a placeholder instead. Enjoy!`}/>
             )}
-        </div>
+        </>
     );
 };
 

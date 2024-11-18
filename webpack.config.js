@@ -1,5 +1,5 @@
 module.exports = {
-    entry: [__dirname + "/src/scss/main.scss"],
+    entry: [__dirname + "/src/scss/main.scss", __dirname + "/src/api/localData/top50DataLocal.json"],
     module: {
       rules: [
         {
@@ -20,6 +20,21 @@ module.exports = {
             },
           ],
         },
+        {
+          test: /\.(json)$/,
+          use: [
+            {
+              loader: 'json-loader',
+              options: {
+                name: '[name].[ext]',
+              },
+            },
+          ],
+          type: "asset/resource",
+          generator: {
+              filename: '[path][name].[hash][ext][query]'
+          }
+      }
       ],
     },
   };

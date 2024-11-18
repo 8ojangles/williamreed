@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { simpleAddressFormatter } from './../utilities/address';
 import { LazyImage } from './LazyImage';
 
-const Card = ({ pub, showRanking = true, showInfo = false, introDelay, scrollPosition }) => {
+const Card = memo(({ pub, showRanking = true, showInfo = false, introDelay, scrollPosition }) => {
     const addressString = simpleAddressFormatter(pub.address);
+    if (pub.id === '1590314') {
+        console.log('Card render', pub.id);
+    }
+    const classList = 'card-intro';
 
     return (
         <a href={pub.content_url}>
-            <div className="card-intro" style={{ animationDelay: `${introDelay}ms`}}>
+            <div className={classList} style={{ animationDelay: `${introDelay}ms`}}>
                 <LazyImage imgUrl={pub.picture} imgAlt={pub.name} />
                 <div className="the-list-meta">
                     {showRanking ? (
@@ -32,6 +36,6 @@ const Card = ({ pub, showRanking = true, showInfo = false, introDelay, scrollPos
             </div>
         </a>
     );
-}
+});
 
 export { Card };

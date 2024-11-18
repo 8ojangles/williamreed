@@ -1,37 +1,43 @@
 import React, { memo } from 'react';
 
-const TabContentItem = ({ children, active, tabId, dataValue, addClass }) => {
+const TabContentItem = memo(({ active, tabId, dataValue, addClass, contents }) => {
 
+    const parentClasses = `tab-content${Number(active) === Number(tabId) ? ' current': ''}`;
+    const childClasses = `list ${addClass ? addClass : ''}`;
+    const thisId = `tab-${tabId}`;
     return (
         <div
-            id={`tab-${tabId}`}
+            id={thisId}
             data-list={dataValue}
-            className={`tab-content${Number(active) === Number(tabId) ? ' current': ''}`}
+            className={parentClasses}
         >
-            <div className={`list ${addClass ? addClass : ''}`}>
-                {children}
+            <div className={childClasses}>
+                {contents}
             </div>
         </div>
     );
-}
+});
 
 const TabNavigationContainerItem = ({ children, label, onClickHandler, addClasses }) => {
+
+    const classList = `tab-link ${addClasses ? addClasses : ''}`;
+
     return (
-        <li className={`tab-link ${addClasses ? addClasses : ''}`}>
+        <li className={classList}>
             <span onClick={onClickHandler}>{label}</span>
             {children && children}
         </li>
     );
-}
+};
 
 
-const TabNavigationItem = memo((props) => {
+const TabNavigationItem = memo(({ label, value, active, tabId, onClickHandler }) => {
 
-    const { label, value, active, tabId, onClickHandler } = props;
+    const classList = `${Number(tabId) === Number(active) ? 'active' : ''}`;
 
     return (
         <li className="tab-link" value={value}>
-            <span className={`${Number(tabId) === Number(active) ? 'active' : ''}`} onClick={onClickHandler}>{label}</span>
+            <span className={classList} onClick={onClickHandler}>{label}</span>
         </li>
     );
 });

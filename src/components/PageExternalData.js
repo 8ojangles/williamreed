@@ -1,9 +1,8 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { GET_PUBS } from '../api/queries';
-import { useFakeQuery } from '../api/hooks/useFakeQuery';
+import { useQuery } from '@apollo/client';
+import { GET_PUBS } from './../api/queries';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { filterByParamRange, filterByParamValue } from './../utilities/filters';
-import { calculateDelay } from '../utilities/animation';
 import { Card } from './Card';
 import { TabNavigation, TabNavigationItem, TabContentItem, TabNavigationContainerItem } from './TabNavigation';
 import { Branding } from './Branding';
@@ -13,10 +12,9 @@ import { Footer } from './Footer';
 import { DropDownList } from './DropDownList';
 import { LoadingSpinner } from './LoadingSpinner';
 import { sortListOptions, getSortLabel, getSortFunction } from './../utilities/sorting';
-import { SkeletonTabContent } from './SkeletonTabContent';
 
 const Page = ({ scrollPosition }) => {
-    const { loading, error, data } = useFakeQuery(GET_PUBS);
+    const { loading, error, data } = useQuery(GET_PUBS);
     const [ selectedTab, setSelectedTab ] = useState(1);
     const [ openSortList, setOpenSortList ] = useState(false);
     const [ selectedSortOption, setSelectedSortOption ] = useState('rankAsc');
@@ -82,8 +80,8 @@ const Page = ({ scrollPosition }) => {
             return undefined;
         }
         console.log('running top50List render');
-        return sortedItems.top50.map((pub, i) => {
-            const delay = calculateDelay(i);
+        return sortedItems.top50.map((pub, index) => {
+            const delay = index * 100;
             return (<Card key={pub.id} pub={pub} introDelay={delay} scrollPosition={scrollPosition} />);
         });
     }, [sortedItems, scrollPosition]);
@@ -92,8 +90,8 @@ const Page = ({ scrollPosition }) => {
         if (!sortedItems) {
             return undefined;
         }
-        return sortedItems.top100.map((pub, i) => {
-            const delay = calculateDelay(i);
+        return sortedItems.top100.map((pub, index) => {
+            const delay = index * 100;
             return (<Card key={pub.id} pub={pub} introDelay={delay} scrollPosition={scrollPosition} />);
         });
     }, [sortedItems, scrollPosition]);
@@ -102,14 +100,13 @@ const Page = ({ scrollPosition }) => {
         if (!sortedItems) {
             return undefined;
         }
-        return sortedItems.specialistAwards.map((pub, i) => {
-            const delay = calculateDelay(i);
+        return sortedItems.specialistAwards.map((pub, index) => {
+            const delay = index * 100;
             return (<Card key={pub.id} pub={pub} showRanking={false} showInfo={true} introDelay={delay} scrollPosition={scrollPosition} />);
         });
     }, [sortedItems, scrollPosition]);
 
-    const dropDownLabel = `Sort by: ${getSortLabel(selectedSortOption)}`;
-    const dropDownClasses = `sort-list-menu ${openSortList ? 'active' : ''}`;
+    const dropDownLabel = getSortLabel(selectedSortOption);
 
     return (
         <> 
@@ -142,15 +139,13 @@ const Page = ({ scrollPosition }) => {
                     active={selectedTab}
                 />
                 <TabNavigationContainerItem
-                    label={dropDownLabel}
-                    addClasses={dropDownClasses}
+                    label={`Sort by: ${dropDownLabel}`} addClasses={`sort-list-menu ${openSortList ? 'active' : ''}`}
                     onClickHandler={handleOnClickSortList}
                 >
                     <DropDownList
                         isOpen={openSortList}
                         listArray={sortListOptions} optionClickHandler={sortListClickHandler}
                         selectedOption={selectedSortOption}
-                        onClickOutside={closeSortList}
                     />
                 </TabNavigationContainerItem>
             </TabNavigation>
@@ -158,16 +153,7 @@ const Page = ({ scrollPosition }) => {
                 <div className="half-background bg-pattern"></div>
                 <div className="row">
                     {loading && !data && (
-                        <>
-                            <LoadingSpinner alternate={false} />
-                            <SkeletonTabContent numberCards={9} />
-                        </>
-                    )}
-                    {error && (
-                        <div className="error">
-                            <p>There was an error fetching the data.</p>
-                            <p>Please try again later.</p>
-                        </div>
+                        <LoadingSpinner />
                     )}
                     {filteredItems && (
                         <> 

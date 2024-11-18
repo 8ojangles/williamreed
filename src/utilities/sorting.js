@@ -7,7 +7,8 @@ const sortListOptions = [
 
 function getSortLabel(value) {
     console.log(value);
-    return sortListOptions.find((option) => option.value === value).label;
+    const result = sortListOptions.find((option) => option.value === value);
+    return result && result.label;
 }
 
 function sortRankAscending(a, b) {

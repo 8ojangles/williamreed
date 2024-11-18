@@ -1,0 +1,61 @@
+$skeleton-grey: #cccccc;
+$skeleton-grey-light: #f2f2f2;
+
+@keyframes skeleton-bg-pulse {
+    0% {
+        background-color: $skeleton-grey;
+    }
+
+    100% {
+        background-color: $skeleton-grey-light;
+    }
+    
+}
+
+.row-background.the-list .row .list a.skeleton-card .the-list-meta .the-list-number {
+    border-color: transparent;
+    background-color: $skeleton-grey;
+
+    span {
+        border-color: transparent;
+    }
+}
+
+.skeleton-card {
+    .skeleton-image {
+        width: 436px;
+        height: 245px;
+        background-color: $skeleton-grey;
+        animation: skeleton-bg-pulse 1s infinite alternate;
+    }
+
+    .the-list-number {
+        border-color: $skeleton-grey;
+        background-color: $skeleton-grey;
+        animation: skeleton-bg-pulse 1s infinite alternate;
+
+        span {
+            color: $skeleton-grey;
+            animation: skeleton-bg-pulse 1s infinite alternate;
+        }
+    }
+    .the-list-meta {
+        width: 100%;
+        .the-list-info {
+            width: 100%;
+            div {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+                background-color: $skeleton-grey;
+                animation: skeleton-bg-pulse 1s infinite alternate;
+                height: 2.5rem; 
+                &:first-of-type {
+                    width: 50%;
+                }
+                &:last-of-type {
+                    width: 75%;
+                }
+            }
+        }
+    }
+}
