@@ -2,6 +2,7 @@
   "name": "william-reed",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://8ojangles.github.io/william-reed-test",
   "dependencies": {
     "@apollo/client": "^3.11.10",
     "@testing-library/dom": "^10.4.0",
@@ -28,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
