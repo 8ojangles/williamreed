@@ -14,6 +14,7 @@ import { DropDownList } from './DropDownList';
 import { LoadingSpinner } from './LoadingSpinner';
 import { sortListOptions, getSortLabel, getSortFunction } from './../utilities/sorting';
 import { SkeletonTabContent } from './SkeletonTabContent';
+import { ErrorText } from './ErrorText';
 
 const Page = ({ scrollPosition }) => {
     const { loading, error, data } = useFakeQuery(GET_PUBS);
@@ -66,9 +67,7 @@ const Page = ({ scrollPosition }) => {
         }
 
         const sortFn = getSortFunction(selectedSortOption);
-        const dropDownLabel = getSortLabel(selectedSortOption);
         const items = {
-            dropDownLabel,
             top50: filteredItems.top50.toSorted(sortFn),
             top100: filteredItems.top100.toSorted(sortFn),
             specialistAwards: filteredItems.specialistAwards.toSorted(sortFn)
@@ -160,14 +159,11 @@ const Page = ({ scrollPosition }) => {
                     {loading && !data && (
                         <>
                             <LoadingSpinner alternate={false} />
-                            <SkeletonTabContent numberCards={9} />
+                            <SkeletonTabContent numberCards={6} />
                         </>
                     )}
                     {error && (
-                        <div className="error">
-                            <p>There was an error fetching the data.</p>
-                            <p>Please try again later.</p>
-                        </div>
+                        <ErrorText />
                     )}
                     {filteredItems && (
                         <> 

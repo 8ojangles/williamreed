@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { FacebookSvgIcon } from './FacebookSvgIcon';
 import { InstagramSvgIcon } from './InstagramSvgIcon';
 import { TwitterSvgIcon } from './TwitterSvgIcon';
@@ -6,10 +6,84 @@ import { MenuSvgIcon } from './MenuSvgIcon';
 import { CloseMenuSvgIcon } from './CloseMenuSvgIcon';
 import { ExpandMenuSvgIcon } from './ExpandMenuSvgIcon';
 import { Top50GastropubsSvgLogo } from './Top50GastropubsSvgLogo';
+import { useWindowSize } from './../hooks/useWindowSize';
+import { useScrollPosition } from '../hooks/useScrollPosition';
+
+const menuItemsLabels = {
+    list: 'The List',
+    recipes: 'Recipes',
+    chefs: 'Chefs',
+    stories: 'Stories',
+    findMyGastropub: 'Find my Gastropub',
+    sponsors: 'Sponsors',
+    theEvent: 'The Event',
+    howTheListIsCreated: 'How the list is created',
+    about: 'About',
+    aboutUs: 'About Us',
+    contactUs: 'Contact Us',
+    follow: 'Follow'
+}
+
+const MenuItem = ({label, linkUrl}) => {
+    return (
+        <li className="menu-item">
+            <a href={linkUrl}>
+                {label}
+            </a>
+        </li>
+    );
+};
+
+const MenuItemContainer = ({children, linkUrl}) => {
+    return (
+        <li className="menu-item">
+            <a href={linkUrl}>
+                {children}
+            </a>
+        </li>
+    );
+};
+
+const NestedMenuItem = ({children, label, linkUrl, onClickHandler, menuId, selectedMenuId, subMenuClasses, width}) => {
+
+    const parentClasses = `menu-item menu-item-has-children${menuId === selectedMenuId ? ' active' : ''}`;
+
+    const subMenuClassesList = `sub-menu${subMenuClasses ? ' ' + subMenuClasses : ''}`;
+
+    const collapsedMenu = width < 1375;
+
+    return (
+        <li className={parentClasses} data-menuid={menuId}>
+            <a href={linkUrl} data-toggle="sub-menu" onClick={onClickHandler}>
+                {label}
+                <i className="expand">
+                    <ExpandMenuSvgIcon />
+                </i>
+            </a>
+            {collapsedMenu ? (
+                <div className="sub-menu-wrapper">
+                    <ul className={subMenuClassesList}>
+                        {children}
+                    </ul>
+                </div>
+            ) : (
+                <ul className={subMenuClassesList}>
+                    {children}
+                </ul>
+            )}
+        </li>
+    );
+};
 
 const Header = memo(({ catchNavMenuHandler }) => {
 
-    const [openMenu, setOpenMenu] = React.useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
+    const { width } = useWindowSize();
+    const scrollPosition = useScrollPosition();
+
+    const [headerClass, setHeaderClass] = useState('header');
+
+    const [openSubMenu, setOpenSubMenu] = useState('');
 
     const handleOpenMenu = () => {
         catchNavMenuHandler();
@@ -21,12 +95,59 @@ const Header = memo(({ catchNavMenuHandler }) => {
         setOpenMenu(false);
     }
 
+    const handleOpenSubMenu = (e) => {
+        e.preventDefault();
+        if (width <= 1375) {
+            const parent = e.target.closest('li');
+            const val = parent.dataset.menuid;
+            console.log('val: ', val);
+            console.log('openSubMenu: ', openSubMenu);
+            console.log('openSubMenu === val: ', openSubMenu === val)
+            if (openSubMenu === val) {
+                setOpenSubMenu('');
+            } else {
+                setOpenSubMenu(val);
+            }
+        }
+    }
+
+    const handleCloseSubMenus = (e) => {
+        setOpenSubMenu('');
+        document.querySelectorAll('.sub-menu').forEach((subMenu) => {
+            subMenu.removeAttribute('style');
+        });
+    };
+
+    const handelFixHeader = useCallback(() => {
+            setHeaderClass('header fixed');
+            window.document.body.classList.add('fixed');
+    }, []);
+
+    const handelUnFixHeader = useCallback(() => {
+        setHeaderClass('header');
+        window.document.body.classList.remove('fixed');
+    }, []);
+
+    useEffect(() => {
+        if (width >= 1375) {
+            if (scrollPosition > 200) {
+                handelFixHeader();
+            } else {
+                handelUnFixHeader();
+            }
+            handleCloseSubMenus();
+        }
+        if (width > 1375) {
+            handleCloseSubMenus();
+        }
+    }, [handelFixHeader, handelUnFixHeader, scrollPosition, width]);
+
     const isActiveClass = `${openMenu ? ' active' : ''}`;
     const overlayClassList = `overlay${isActiveClass}`;
     const navbarClasslist = `navbar${isActiveClass}`;
 
     return (
-        <header className="header">
+        <header className={headerClass}>
 
             <section className="row">
                 <a href="/#" className="brand" title="Top 50 Gastropubs">
@@ -43,66 +164,55 @@ const Header = memo(({ catchNavMenuHandler }) => {
                     <ul className="menu">
                         <li className="menu-item menu-logo">
                             <a href="/#">
-                                <svg className="nav-logo" role="img" aria-label="Top 50 Gastropubs Logo" width="248" height="35" viewBox="0 0 353.975 50"><path d="M71.339 45.442V5.919h-3.793V4.575h8.933v1.343h-3.796v39.523h-1.344zm13.417.294h-1.225c-2.687 0-4.088-1.343-4.088-3.97V8.253c0-2.626 1.392-3.97 4.088-3.97h1.225c2.687 0 4.028 1.343 4.028 3.97v33.514c0 2.626-1.341 3.969-4.028 3.969zm-.058-40.11h-1.16c-1.81 0-2.687.816-2.687 2.568v33.642c0 1.752.877 2.568 2.687 2.568h1.16c1.81 0 2.684-.817 2.684-2.568V8.195c.001-1.752-.874-2.569-2.684-2.569zm9.213 39.816h-1.392V4.575h4.204c2.861 0 4.202 1.225 4.202 3.97v15.004c0 2.863-1.459 4.322-4.32 4.322h-2.694v17.571zm2.743-39.523h-2.742v20.609h2.626c1.986 0 2.979-.928 2.979-2.861V8.487c0-1.752-1.052-2.568-2.863-2.568zm22.653 35.848c0 2.626-1.392 3.97-4.028 3.97h-.759c-2.629 0-3.972-1.343-3.972-3.912V30.147h1.343v11.677c0 1.752.816 2.626 2.629 2.626h.759c1.81 0 2.684-.875 2.684-2.626V24.888c0-1.81-.875-2.684-2.568-2.684-1.371.055-2.667.637-3.619 1.624h-1.109V4.571h8.406v1.29h-7.065l-.053 16.521c1.005-.924 2.315-1.444 3.68-1.459 2.276 0 3.677 1.343 3.677 3.738l-.005 17.106zm8.682 3.969h-1.16c-2.687 0-4.03-1.343-4.03-3.97V8.253c0-2.626 1.343-3.97 4.03-3.97h1.16c2.626 0 4.028 1.343 4.028 3.97v33.514c0 2.626-1.402 3.969-4.028 3.969zm-.059-40.168h-1.051c-1.868 0-2.745.875-2.745 2.626v33.642c0 1.752.877 2.626 2.745 2.626h1.051c1.856 0 2.745-.875 2.745-2.626V8.195c.001-1.752-.876-2.627-2.745-2.627h0zm23.121 22.937v-5.364h9.341v15.064c0 5.079-2.51 7.589-7.589 7.589h-3.327c-5.081 0-7.591-2.51-7.591-7.589V11.814c0-5.079 2.51-7.589 7.591-7.589h3.269c5.079 0 7.531 2.51 7.531 7.531v6.599h-6.13v-6.248c0-1.624-.759-2.394-2.336-2.394h-1.283c-1.624 0-2.394.761-2.394 2.394v25.807c0 1.624.759 2.394 2.394 2.394h1.392c1.624 0 2.392-.759 2.392-2.394v-9.408h-3.26zm32.233 16.937h-6.188l-.816-6.422h-6.482l-.768 6.422h-5.77l5.837-40.927h8.285l5.902 40.927zm-12.786-11.97h5.081l-2.51-20.433-2.571 20.433zm33.519-1.923v6.656c0 5.079-2.51 7.589-7.589 7.589h-2.745c-5.079 0-7.531-2.51-7.531-7.531v-8.64h6.079v8.405c0 1.578.759 2.336 2.394 2.336h.816c1.636 0 2.394-.759 2.394-2.336v-5.605c.089-1.35-.588-2.636-1.752-3.327l-6.313-4.612c-2.803-1.986-3.619-3.912-3.619-7.065v-5.605c0-5.079 2.51-7.589 7.589-7.589h2.629c5.021 0 7.531 2.51 7.531 7.531v7.424h-6.13v-7.192c0-1.578-.759-2.336-2.336-2.336h-.759c-1.575 0-2.334.759-2.334 2.336v4.554c-.104 1.353.576 2.646 1.75 3.327l6.306 4.612c2.738 1.989 3.62 3.741 3.62 7.068zm8.373 13.893V10.239h-5.605V4.575h17.463v5.663h-5.605v35.203l-6.253.001h0zm33.057-13.893v13.893h-6.246V31.665c0-1.81-.819-2.626-2.629-2.626h-2.812v16.403h-6.246V4.575h10.276c5.079 0 7.589 2.51 7.589 7.589v7.707c0 3.619-1.285 5.371-3.561 6.306 2.578.704 3.629 2.277 3.629 5.372zm-8.64-21.426h-3.046V23.61h2.803c1.752 0 2.571-.819 2.571-2.513v-8.64c.008-1.585-.753-2.334-2.328-2.334zm23.312 35.671h-3.327c-5.081 0-7.591-2.51-7.591-7.589V11.814c0-5.079 2.51-7.589 7.591-7.589h3.327c5.081 0 7.591 2.51 7.591 7.589v26.391c.001 5.079-2.509 7.589-7.591 7.589zm-.993-36.082h-1.283c-1.624 0-2.394.761-2.394 2.394v25.807c0 1.624.759 2.394 2.394 2.394h1.283c1.578 0 2.336-.759 2.336-2.394V12.106c0-1.633-.758-2.394-2.336-2.394zm18.691 35.73h-6.239V4.575h9.809c5.079 0 7.589 2.51 7.589 7.589v10.86c0 5.079-2.51 7.589-7.589 7.589h-3.561l-.009 14.829zm2.578-35.38h-2.568v15.064h2.568c1.578 0 2.336-.759 2.336-2.394V12.457c-.016-1.634-.768-2.395-2.336-2.395zm30.333 28.143c0 5.079-2.51 7.589-7.589 7.589h-3.037c-5.079 0-7.589-2.51-7.589-7.589V4.575h6.248v33.338c0 1.624.759 2.394 2.392 2.394h.993c1.578 0 2.336-.759 2.336-2.394V4.575h6.246v33.63zm21.709-7.883v7.533c0 5.079-2.513 7.589-7.591 7.589h-10.208V4.575h10.102c5.079 0 7.589 2.51 7.589 7.589v6.014c0 3.619-1.225 5.431-3.503 6.248 2.442.817 3.611 2.568 3.611 5.896zm-8.642-20.26h-2.977v11.911h2.742c1.752 0 2.571-.816 2.571-2.568v-7.007a2.05 2.05 0 0 0-1.717-2.336 2.07 2.07 0 0 0-.619 0zm-2.977 29.895h3.093c1.578 0 2.336-.759 2.336-2.336v-7.765c0-1.752-.816-2.568-2.568-2.568h-2.861v12.669h0zm33.157-8.408v6.656c0 5.079-2.51 7.589-7.589 7.589h-2.745c-5.079 0-7.531-2.51-7.531-7.531v-8.64h6.072v8.405c0 1.578.759 2.336 2.392 2.336h.819c1.624 0 2.394-.759 2.394-2.336v-5.605c.089-1.35-.588-2.636-1.752-3.327l-6.306-4.612c-2.803-1.986-3.619-3.912-3.619-7.065v-5.605c0-5.079 2.51-7.589 7.589-7.589h2.626c5.021 0 7.532 2.51 7.533 7.531v7.424h-6.132v-7.192c0-1.578-.759-2.336-2.334-2.336h-.759c-1.578 0-2.336.759-2.336 2.336v4.554c-.103 1.353.577 2.646 1.752 3.327l6.306 4.612c2.743 1.989 3.62 3.741 3.62 7.068zM28.793 24.542l-10.436 7.584 3.983-12.27-10.435-7.585h12.901L28.793 0l3.988 12.271h12.902l-10.438 7.585 3.986 12.27zM52.755 39.72l.545-4.299h.132l.559 4.299h-1.236zm-3.211 3.726h3.079l-.058-.162a2.08 2.08 0 0 1-.118-1.16l.088-.735h1.68l.102.838c.046.359 0 .723-.132 1.06l-.06.162h3.434l-.118-.19a3.38 3.38 0 0 1-.427-1.209l-1.104-6.907a2.9 2.9 0 0 1 .058-1.25l.058-.193h-5.051l.058.193c.147.436.178.903.091 1.355l-1.091 6.96c-.053.33-.162.649-.325.942l-.164.296zm-6.318 0h5.816v-2.223l-.146.118a1.81 1.81 0 0 1-1.237.441h-1.148V35c-.032-.425.111-.844.397-1.16l.118-.146h-3.8l.118.146a1.56 1.56 0 0 1 .397 1.16v7.157a1.55 1.55 0 0 1-.397 1.16l-.118.129zm-6.392 0h5.819v-2.223l-.148.118a1.81 1.81 0 0 1-1.237.441h-1.149V35c-.032-.425.111-.844.397-1.16l.118-.146h-3.8l.118.146a1.56 1.56 0 0 1 .397 1.16v7.157a1.55 1.55 0 0 1-.397 1.16l-.118.129zm-7.392 0h6.181v-2.181l-.148.118a1.56 1.56 0 0 1-1.148.397h-1.664v-2.355h.972a1.55 1.55 0 0 1 1.16.399l.146.116v-2.694l-.146.118a1.56 1.56 0 0 1-1.16.397h-.972V35.36h1.663a1.55 1.55 0 0 1 1.148.399l.148.116v-2.178h-6.181l.116.146a1.56 1.56 0 0 1 .399 1.16v7.157a1.55 1.55 0 0 1-.399 1.16l-.115.126zm-5.554-5.626v-2.459h.619c.589 0 .663.339.663.605v1.237c0 .264-.074.617-.663.617h-.619zm-3.225 5.626h3.742l-.118-.146a1.55 1.55 0 0 1-.399-1.16v-2.654h.598l1.369 3.96h2.947a3.38 3.38 0 0 1-.562-1l-1.325-3.359c.664-.467 1.029-1.252.958-2.06v-.944c.109-1.213-.786-2.285-1.999-2.394-.159-.014-.319-.011-.477.009h-4.735l.118.146a1.56 1.56 0 0 1 .397 1.16v7.157a1.55 1.55 0 0 1-.397 1.16l-.117.125zm-7.348-7.496l.16-.118a2.26 2.26 0 0 1 1.415-.464h.397v6.728c.054.442-.091.885-.397 1.209l-.162.146h3.888l-.118-.146c-.301-.328-.46-.763-.441-1.209v-6.729h.383a2.25 2.25 0 0 1 1.413.464l.162.118v-2.253h-6.7v2.254h0zm-6.304.427c-.082.975.347 1.923 1.134 2.503l1.118.826c.898.664 1.06.884 1.06 1.325 0 .559-.413.796-1.193.796a3.48 3.48 0 0 1-1.663-.464l-.443-.25v2.431l.206-.06a2.91 2.91 0 0 1 .824-.116c.487 0 1.076.102 1.724.102 2.107 0 3.181-1.016 3.181-2.74a3.11 3.11 0 0 0-1.339-2.605l-1.121-.826c-.661-.485-.884-.722-.884-1.16 0-.501.267-.826 1.016-.826a2.89 2.89 0 0 1 1.473.443l.427.251v-2.383l-.206.06a3.2 3.2 0 0 1-.735.088c-.464 0-1.03-.104-1.68-.104-1.75-.001-2.899.927-2.899 2.709zM0 43.449h6.185v-2.183l-.146.116a1.55 1.55 0 0 1-1.148.399H3.225v-2.353h.972c.425-.032.844.111 1.16.397l.148.118v-2.694l-.148.116c-.315.287-.735.432-1.16.399h-.972v-2.401h1.666a1.56 1.56 0 0 1 1.148.397l.146.118V33.7H0l.125.142c.283.317.424.736.39 1.16v7.157c.032.425-.111.844-.396 1.16l-.119.13zm28.041 6.538h1.782l-.06-.072a.94.94 0 0 1-.232-.615v-2.309h.06l.548 1.534h.527l.543-1.534h.049V49.3c.002.225-.076.443-.22.615l-.06.072h1.882l-.063-.072a.95.95 0 0 1-.232-.615v-3.501a.95.95 0 0 1 .232-.615l.063-.072h-1.786l-.601 1.856h-.037l-.719-1.856h-1.67l.06.072c.145.172.223.39.22.615V49.3c.002.225-.076.443-.22.615l-.066.072zm-2.933-1.856l.283-2.151h.06l.271 2.151h-.614zm-1.624 1.856h1.585l-.037-.072c-.078-.187-.103-.391-.072-.591l.035-.367h.835l.063.418a.89.89 0 0 1-.086.541l-.037.072h1.756l-.06-.097c-.119-.181-.199-.386-.232-.601l-.552-3.452a1.16 1.16 0 0 1 .037-.626l.037-.097h-2.557l.051.097a1.09 1.09 0 0 1 .049.675l-.541 3.48c-.027.164-.086.321-.172.464l-.102.156zm-2.696-.833v-3.206h.343c.295 0 .332.172.332.295v2.615c0 .123-.037.295-.332.295l-.343.001zm-1.67.835h2.469c.609.085 1.172-.34 1.257-.949a1.08 1.08 0 0 0 .007-.241v-2.496a1.12 1.12 0 0 0-1.032-1.197c-.077-.006-.155-.003-.232.007h-2.469l.06.072a.94.94 0 0 1 .232.615v3.5a.94.94 0 0 1-.232.615l-.06.074zm14.568-.072c.145-.172.223-.39.22-.615v-3.503c.002-.225-.076-.443-.22-.615l-.063-.072h1.671l.721 1.856h.037l.601-1.856h1.786l-.063.072a.95.95 0 0 0-.232.615V49.3a.95.95 0 0 0 .232.615l.063.072H36.55l.06-.072a.94.94 0 0 0 .232-.615v-2.308h-.06l-.543 1.534h-.527l-.548-1.534h-.051V49.3a.94.94 0 0 0 .232.615l.06.072h-1.782l.063-.07z"/></svg>
+                                <Top50GastropubsSvgLogo width={248} height={35} />
                             </a> 
                         </li>
-                        <li className="menu-item">
-                            <a href="/#">The List</a>
-                        </li>
-                        <li className="menu-item">
-                            <a href="/#">Recipes</a>
-                        </li>
-                        <li className="menu-item">
-                            <a href="/#">Chefs</a>
-                        </li>
-                        <li className="menu-item">
-                            <a href="/#">Stories</a>
-                        </li>
-                        <li className="menu-item">
-                            <a href="/#">Find my Gastropub</a>
-                        </li>
-                        <li className="menu-item">
-                            <a href="/#">Sponsors</a>
-                        </li>
-                        <li className="menu-item menu-item-has-children">
-                            <a href="/#" data-toggle="sub-menu">The Event <i className="expand"><ExpandMenuSvgIcon /></i></a>
-                            <ul className="sub-menu">
-                                <li className="menu-item">
-                                    <a href="/#">How the list is created</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="menu-item menu-item-has-children">
-                            <a href="/#" data-toggle="sub-menu">About<i className="expand"><ExpandMenuSvgIcon /></i></a>
-                            <ul className="sub-menu">
-                                <li className="menu-item">
-                                    <a href="/#">About Us</a>
-                                </li>
-                                <li className="menu-item">
-                                    <a href="/#">Contact Us</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="menu-item menu-item-has-children">
-                            <a href="/#" data-toggle="sub-menu">Follow <i className="expand"><ExpandMenuSvgIcon /></i></a>
-                            <ul className="sub-menu social">
-                                <li className="menu-item">
-                                    <a href="/#">
-                                        <FacebookSvgIcon />
-                                    </a>
-                                </li>
-                                <li className="menu-item">
-                                    <a href="/#">
-                                        <InstagramSvgIcon />
-                                    </a>
-                                </li>
-                                <li className="menu-item">
-                                    <a href="/#">
-                                        <TwitterSvgIcon />
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        <MenuItem label={menuItemsLabels.list} linkUrl="/#" />
+                        <MenuItem label={menuItemsLabels.recipes} linkUrl="/#" />
+                        <MenuItem label={menuItemsLabels.chefs} linkUrl="/#" />
+                        <MenuItem label={menuItemsLabels.stories} linkUrl="/#" />
+                        <MenuItem label={menuItemsLabels.findMyGastropub} linkUrl="/#" />
+                        <MenuItem label={menuItemsLabels.sponsors} linkUrl="/#" />
+                        <NestedMenuItem
+                            label={menuItemsLabels.theEvent}
+                            linkUrl="/#"
+                            menuId='1'
+                            width={width}
+                            selectedMenuId={openSubMenu}
+                            onClickHandler={handleOpenSubMenu}
+                        >
+                            <MenuItem label={menuItemsLabels.howTheListIsCreated} linkUrl="/#" />
+                        </NestedMenuItem>
+                        <NestedMenuItem
+                            label={menuItemsLabels.about}
+                            linkUrl="/#"
+                            menuId='2'
+                            width={width}
+                            selectedMenuId={openSubMenu}
+                            onClickHandler={handleOpenSubMenu}
+                        >
+                            <MenuItem label={menuItemsLabels.aboutUs} linkUrl="/#" />
+                            <MenuItem label={menuItemsLabels.contactUs} linkUrl="/#" />
+                        </NestedMenuItem>
+                        <NestedMenuItem
+                            label={menuItemsLabels.follow}
+                            linkUrl="/#"
+                            menuId='3'
+                            width={width}
+                            selectedMenuId={openSubMenu}
+                            onClickHandler={handleOpenSubMenu}
+                            subMenuClasses="social"
+                        >
+                            <MenuItemContainer linkUrl="/#">
+                                <FacebookSvgIcon />
+                            </MenuItemContainer>
+                            <MenuItemContainer linkUrl="/#">
+                                <InstagramSvgIcon />
+                            </MenuItemContainer>
+                            <MenuItemContainer linkUrl="/#">
+                                <TwitterSvgIcon />
+                            </MenuItemContainer>
+                        </NestedMenuItem>
                     </ul>
                 </nav>
             </section>

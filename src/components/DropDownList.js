@@ -1,4 +1,4 @@
-import { memo, useRef, useEffect } from 'react';
+import { memo } from 'react';
 import { useClickOutside } from './../hooks/useClickOutside';
 
 const DropDownListOption = memo(({ value, label, selected, onClickHandler }) => {
@@ -12,14 +12,7 @@ const DropDownListOption = memo(({ value, label, selected, onClickHandler }) => 
 
 const DropDownList = memo(({ isOpen, listArray, optionClickHandler, selectedOption, onClickOutside }) => {
 
-    const ref = useRef(null);
-    useClickOutside(ref, onClickOutside);
-
-    useEffect(() => {
-        if (isOpen) {
-            ref.current.focus();
-        }
-    }, [isOpen]);
+    const ref = useClickOutside(onClickOutside);
 
     return (
         <ul ref={ref} className={`sort-list ${isOpen ? 'active' : ''}`}>
