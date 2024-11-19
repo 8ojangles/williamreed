@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/william-reed-test/static/css/main.d9413a00.css",
-    "main.js": "/william-reed-test/static/js/main.a67cd883.js",
-    "static/js/453.d62a88f3.chunk.js": "/william-reed-test/static/js/453.d62a88f3.chunk.js",
-    "static/media/map-bg.png": "/william-reed-test/static/media/map-bg.bec9a499a5a46522557f.png",
-    "static/media/bg-pattern.png": "/william-reed-test/static/media/bg-pattern.12fc1a7a26724fd592f6.png",
-    "static/media/estrella_damm_logo.png": "/william-reed-test/static/media/estrella_damm_logo.98a88ec7c3231e0d7507.png",
-    "index.html": "/william-reed-test/index.html",
-    "main.d9413a00.css.map": "/william-reed-test/static/css/main.d9413a00.css.map",
-    "main.a67cd883.js.map": "/william-reed-test/static/js/main.a67cd883.js.map",
-    "453.d62a88f3.chunk.js.map": "/william-reed-test/static/js/453.d62a88f3.chunk.js.map"
+    "main.css": "/williamreed/static/css/main.124dfdc2.css",
+    "main.js": "/williamreed/static/js/main.38e542e7.js",
+    "static/js/453.d62a88f3.chunk.js": "/williamreed/static/js/453.d62a88f3.chunk.js",
+    "static/media/map-bg.png": "/williamreed/static/media/map-bg.bec9a499a5a46522557f.png",
+    "static/media/bg-pattern.png": "/williamreed/static/media/bg-pattern.12fc1a7a26724fd592f6.png",
+    "static/media/estrella_damm_logo.png": "/williamreed/static/media/estrella_damm_logo.98a88ec7c3231e0d7507.png",
+    "index.html": "/williamreed/index.html",
+    "main.124dfdc2.css.map": "/williamreed/static/css/main.124dfdc2.css.map",
+    "main.38e542e7.js.map": "/williamreed/static/js/main.38e542e7.js.map",
+    "453.d62a88f3.chunk.js.map": "/williamreed/static/js/453.d62a88f3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9413a00.css",
-    "static/js/main.a67cd883.js"
+    "static/css/main.124dfdc2.css",
+    "static/js/main.38e542e7.js"
   ]
 }
