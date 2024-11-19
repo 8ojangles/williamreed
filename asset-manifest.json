@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/williamreed/static/css/main.124dfdc2.css",
-    "main.js": "/williamreed/static/js/main.38e542e7.js",
+    "main.js": "/williamreed/static/js/main.73bb1fbd.js",
     "static/js/453.d62a88f3.chunk.js": "/williamreed/static/js/453.d62a88f3.chunk.js",
     "static/media/map-bg.png": "/williamreed/static/media/map-bg.bec9a499a5a46522557f.png",
     "static/media/bg-pattern.png": "/williamreed/static/media/bg-pattern.12fc1a7a26724fd592f6.png",
     "static/media/estrella_damm_logo.png": "/williamreed/static/media/estrella_damm_logo.98a88ec7c3231e0d7507.png",
     "index.html": "/williamreed/index.html",
     "main.124dfdc2.css.map": "/williamreed/static/css/main.124dfdc2.css.map",
-    "main.38e542e7.js.map": "/williamreed/static/js/main.38e542e7.js.map",
+    "main.73bb1fbd.js.map": "/williamreed/static/js/main.73bb1fbd.js.map",
     "453.d62a88f3.chunk.js.map": "/williamreed/static/js/453.d62a88f3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.124dfdc2.css",
-    "static/js/main.38e542e7.js"
+    "static/js/main.73bb1fbd.js"
   ]
 }
