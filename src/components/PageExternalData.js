@@ -18,7 +18,6 @@ const Page = ({ scrollPosition }) => {
     const [ selectedTab, setSelectedTab ] = useState(1);
     const [ openSortList, setOpenSortList ] = useState(false);
     const [ selectedSortOption, setSelectedSortOption ] = useState('rankAsc');
-    console.log('Page render');
     
     // Have to catch menu button click to toggle body scrolling
     // Not "React way", but it works for this demo
@@ -76,10 +75,8 @@ const Page = ({ scrollPosition }) => {
 
     const top50List = useMemo(() => {
         if (!sortedItems) {
-            console.log('No sorted items');
             return undefined;
         }
-        console.log('running top50List render');
         return sortedItems.top50.map((pub, index) => {
             const delay = index * 100;
             return (<Card key={pub.id} pub={pub} introDelay={delay} scrollPosition={scrollPosition} />);

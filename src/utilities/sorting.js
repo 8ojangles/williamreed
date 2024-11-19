@@ -6,7 +6,6 @@ const sortListOptions = [
 ];
 
 function getSortLabel(value) {
-    console.log(value);
     const result = sortListOptions.find((option) => option.value === value);
     return result && result.label;
 }

@@ -4,9 +4,6 @@ import { LazyImage } from './LazyImage';
 
 const Card = memo(({ pub, showRanking = true, showInfo = false, introDelay, scrollPosition }) => {
     const addressString = simpleAddressFormatter(pub.address);
-    if (pub.id === '1590314') {
-        console.log('Card render', pub.id);
-    }
     const classList = 'card-intro';
 
     return (

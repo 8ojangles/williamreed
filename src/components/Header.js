@@ -100,9 +100,6 @@ const Header = memo(({ catchNavMenuHandler }) => {
         if (width <= 1375) {
             const parent = e.target.closest('li');
             const val = parent.dataset.menuid;
-            console.log('val: ', val);
-            console.log('openSubMenu: ', openSubMenu);
-            console.log('openSubMenu === val: ', openSubMenu === val)
             if (openSubMenu === val) {
                 setOpenSubMenu('');
             } else {
@@ -113,9 +110,6 @@ const Header = memo(({ catchNavMenuHandler }) => {
 
     const handleCloseSubMenus = (e) => {
         setOpenSubMenu('');
-        document.querySelectorAll('.sub-menu').forEach((subMenu) => {
-            subMenu.removeAttribute('style');
-        });
     };
 
     const handelFixHeader = useCallback(() => {
